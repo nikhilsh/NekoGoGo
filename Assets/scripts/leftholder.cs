@@ -49,7 +49,7 @@ public class leftholder : MonoBehaviour {
 			if (sides == 0) {
 				// top
 				int y = 3;
-				for (float x = -3; x <= 3; x += 0.2f) {
+				for (float x = -3; x <= 3; x += 0.5f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;
@@ -59,7 +59,7 @@ public class leftholder : MonoBehaviour {
 			} else if (sides == 1) {
 				// right
 				int x = 3;
-				for (float y = 3; y >= -3; y -= 0.2f) {
+				for (float y = 3; y >= -3; y -= 0.5f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;
@@ -69,7 +69,7 @@ public class leftholder : MonoBehaviour {
 			} else if (sides == 2) {
 				// bottom
 				int y = -3;
-				for (float x = 3; x >= -3; x -= 0.2f) {
+				for (float x = 3; x >= -3; x -= 0.5f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;
@@ -79,7 +79,7 @@ public class leftholder : MonoBehaviour {
 			} else {
 				// left
 				int x = -3;
-				for (float y = -3; y <= 3; y += 0.2f) {
+				for (float y = -3; y <= 3; y += 0.5f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;

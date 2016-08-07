@@ -18,9 +18,9 @@ public class PointScript : MonoBehaviour
 				}
 				if (!halo.enabled) {
 					if (string.Compare (hit.transform.parent.name, "holderleft") == 0) {
-						halo.enabled = leftholder.check (int.Parse (hit.transform.gameObject.name));
+						halo.enabled = leftholder.check (int.Parse (gameObject.name));
 					} else if (string.Compare (hit.transform.parent.name, "holderright") == 0) {
-						halo.enabled = rightholder.check (int.Parse (hit.transform.gameObject.name));
+						halo.enabled = rightholder.check (int.Parse (gameObject.name));
 					}
 
 				}
