@@ -95,7 +95,7 @@ public class leftholder : MonoBehaviour {
 		count = 0;
 		index = 0;
 		float radius = 3.0f;
-		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.05f){
+		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.1f){
 			GameObject temp = Instantiate (urstoff, new Vector3 (Mathf.Cos(angle+90.0f)*radius, Mathf.Sin(angle+90.0f)*radius, 0), Quaternion.identity) as GameObject;
 			temp.transform.parent = gameObject.transform;
 			temp.transform.position += temp.transform.parent.position;

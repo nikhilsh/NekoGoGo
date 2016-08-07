@@ -50,7 +50,7 @@ public class rightholder : MonoBehaviour {
 			if (sides == 0) {
 				// top
 				int y = 3;
-				for (float x = -3; x <= 3; x += 0.4f) {
+				for (float x = -3; x <= 3; x += 0.2f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;
@@ -60,7 +60,7 @@ public class rightholder : MonoBehaviour {
 			} else if (sides == 1) {
 				// right
 				int x = 3;
-				for (float y = 3; y >= -3; y -= 0.4f) {
+				for (float y = 3; y >= -3; y -= 0.2f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;
@@ -70,7 +70,7 @@ public class rightholder : MonoBehaviour {
 			} else if (sides == 2) {
 				// bottom
 				int y = -3;
-				for (float x = 3; x >= -3; x -= 0.4f) {
+				for (float x = 3; x >= -3; x -= 0.2f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;
@@ -80,7 +80,7 @@ public class rightholder : MonoBehaviour {
 			} else {
 				// left
 				int x = -3;
-				for (float y = -3; y <= 3; y += 0.4f) {
+				for (float y = -3; y <= 3; y += 0.2f) {
 					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
 					temp.transform.parent = gameObject.transform;
 					temp.transform.position += temp.transform.parent.position;
@@ -96,7 +96,7 @@ public class rightholder : MonoBehaviour {
 		count = 0;
 		index = 0;
 		float radius = 3.0f;
-		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.05f){
+		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.1f){
 			GameObject temp = Instantiate (urstoff, new Vector3 (Mathf.Cos(angle+90.0f)*radius, Mathf.Sin(angle+90.0f)*radius, 0), Quaternion.identity) as GameObject;
 			temp.transform.parent = gameObject.transform;
 			temp.transform.position += temp.transform.parent.position;
