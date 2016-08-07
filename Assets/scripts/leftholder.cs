@@ -4,10 +4,11 @@ using System.Collections;
 public class leftholder : MonoBehaviour {
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
+	public static Sprite MoveSprite;
 	public GameObject urstoff;
 	static int count = -1;
-	static int index = -1;
-	private SpriteRenderer spriteRenderer; 
+	static int hitIndex = -1;
+	private static SpriteRenderer spriteRenderer; 
 	Sprite publicSprite;
 
 	void Start () {
@@ -23,27 +24,20 @@ public class leftholder : MonoBehaviour {
 		}
 	}
 
-	public static bool check(int hitIndex){
-		if (index == -1) {
-			return false;
-		}
-		if (hitIndex == index) {
-			index++;
-			return true;
-		} 
+	public static void check(){
+		hitIndex++;
 
-		if (hitIndex == count) {
+		if (hitIndex >= count*0.9) {
+			spriteRenderer.sprite = MoveSprite;
 			// UPDATE THE CAT
 			// SOMEHOW MAKE THE FUCKING CAT TAKE ANOTHER STEP!
 		}
-			
-		return false;
 	}
 
 	void square(){
 		spriteRenderer.sprite = SquareSprite;
 		count = 0;
-		index = 0;
+		hitIndex = 0;
 
 		for (int sides=0 ; sides<4 ; sides++) {
 			if (sides == 0) {
@@ -93,9 +87,9 @@ public class leftholder : MonoBehaviour {
 	void circle(){
 		spriteRenderer.sprite = CircleSprite;
 		count = 0;
-		index = 0;
+		hitIndex = 0;
 		float radius = 3.0f;
-		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.1f){
+		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.15f){
 			GameObject temp = Instantiate (urstoff, new Vector3 (Mathf.Cos(angle+90.0f)*radius, Mathf.Sin(angle+90.0f)*radius, 0), Quaternion.identity) as GameObject;
 			temp.transform.parent = gameObject.transform;
 			temp.transform.position += temp.transform.parent.position;
