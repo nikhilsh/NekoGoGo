@@ -14,8 +14,6 @@ public class mainholder : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (leftholder.check () && rightholder.check ()) {
-			leftShape = "circle";
-			rightShape = "square";
 			leftholder.destroyAllChild ();
 			rightholder.destroyAllChild ();
 		}
