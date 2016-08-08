@@ -11,7 +11,7 @@ public class leftholder : MonoBehaviour {
 	static int hitIndex = -1;
 	private static SpriteRenderer spriteRenderer; 
 	Sprite publicSprite;
-	static List<GameObject> listofpoints = new List<GameObject>();
+	static List<GameObject> listofleftpoints = new List<GameObject>();
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
@@ -38,7 +38,7 @@ public class leftholder : MonoBehaviour {
 	}
 
 	public static void clearAllHalo(){
-		foreach (GameObject child in listofpoints) {
+		foreach (GameObject child in listofleftpoints) {
 			var temp = (Behaviour)child.GetComponent ("Halo");
 			temp.enabled = false;
 		}
@@ -46,7 +46,7 @@ public class leftholder : MonoBehaviour {
 	}
 
 	public static void destroyAllChild(){
-		foreach (GameObject child in listofpoints) {
+		foreach (GameObject child in listofleftpoints) {
 			GameObject.Destroy(child);
 		}
 	}
@@ -66,7 +66,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name = ""+count;
 					count++;
-					listofpoints.Add (temp);
+					listofleftpoints.Add (temp);
 				}
 			} else if (sides == 1) {
 				// right
@@ -77,7 +77,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name =  ""+count;
 					count++;
-					listofpoints.Add (temp);
+					listofleftpoints.Add (temp);
 				}
 			} else if (sides == 2) {
 				// bottom
@@ -88,7 +88,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name =  ""+count;
 					count++;
-					listofpoints.Add (temp);
+					listofleftpoints.Add (temp);
 				}
 			} else {
 				// left
@@ -99,7 +99,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name = ""+count;
 					count++;
-					listofpoints.Add (temp);
+					listofleftpoints.Add (temp);
 				}
 			}
 		}
@@ -116,7 +116,7 @@ public class leftholder : MonoBehaviour {
 			temp.transform.position += temp.transform.parent.position;
 			temp.name = ""+count;
 			count++;
-			listofpoints.Add (temp);
+			listofleftpoints.Add (temp);
 		}
 	}
 
