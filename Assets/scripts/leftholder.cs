@@ -14,10 +14,23 @@ public class leftholder : MonoBehaviour {
 	private static SpriteRenderer spriteRenderer; 
 	static List<GameObject> listofurstoff = new List<GameObject>();
 
+	public static bool change = false;
+
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		shape = mainholder.getLeftShape ();
 		initialise (shape);
+	}
+
+	void update(){
+		if (change) {
+			shape = mainholder.getLeftShape ();
+			initialise (shape);
+		}
+	}
+
+	public static void changeShape(){
+		change = true;
 	}
 
 	void initialise(string shape){
@@ -44,6 +57,8 @@ public class leftholder : MonoBehaviour {
 			temp.name = ""+i;
 			listofurstoff.Add (temp);
 		}
+
+		change = false;
 	}
 
 	public static bool check(){

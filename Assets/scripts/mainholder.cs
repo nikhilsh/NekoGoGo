@@ -3,20 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class mainholder : MonoBehaviour {
-	public static string leftShape;
-	public static string rightShape;
-
-	void Start(){
-		leftShape = "square";
-		rightShape = "circle";
-	}
+	public static string leftShape = "circle";
+	public static string rightShape = "circle";
 
 	// Update is called once per frame
 	void Update () {
 		if (leftholder.check () && rightholder.check ()) {
 			leftholder.destroyAllChild ();
 			rightholder.destroyAllChild ();
+
+			leftShape = "square";
+			rightShape = "square";
+			leftholder.changeShape ();
+			rightholder.changeShape ();
 		}
+	}
+
+	public static void setLeftShape(string shape){
+		leftShape = shape;
+	}
+
+	public static void setRightShape(string shape){
+		rightShape = shape;
 	}
 
 	public static string getLeftShape(){

@@ -14,11 +14,25 @@ public class rightholder : MonoBehaviour {
 	private static SpriteRenderer spriteRenderer; 
 	static List<GameObject> listofurstoff = new List<GameObject>();
 
+	public static bool change = false;
+
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		shape = mainholder.getRightShape ();
 		initialise (shape);
 	}
+
+	void update(){
+		if (change) {
+			shape = mainholder.getRightShape ();
+			initialise (shape);
+		}
+	}
+
+	public static void changeShape(){
+		change = true;
+	}
+
 
 	void initialise(string shape){
 		hitIndex = 0;
@@ -44,6 +58,8 @@ public class rightholder : MonoBehaviour {
 			temp.name = ""+i;
 			listofurstoff.Add (temp);
 		}
+
+		change = false;
 	}
 
 	public static bool check(){
