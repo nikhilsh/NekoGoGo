@@ -26,7 +26,7 @@ public class leftholder : MonoBehaviour {
 		}
 	}
 
-	public static void check(){
+	public static bool check(){
 		hitIndex++;
 
 		if (hitIndex >= count*0.7) {
@@ -50,8 +50,8 @@ public class leftholder : MonoBehaviour {
 		listofleftpoints.Clear ();
 	}
 
-	void square(Sprite square){
-		spriteRenderer.sprite = square;
+	void square(){
+		spriteRenderer.sprite = SquareSprite;
 		count = 0;
 		hitIndex = 0;
 
@@ -104,8 +104,8 @@ public class leftholder : MonoBehaviour {
 		}
 	}
 
-	void circle(Sprite circle){
-		spriteRenderer.sprite = circle;
+	void circle(){
+		spriteRenderer.sprite = CircleSprite;
 		count = 0;
 		hitIndex = 0;
 		float radius = 3.0f;

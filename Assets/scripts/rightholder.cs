@@ -26,7 +26,7 @@ public class rightholder : MonoBehaviour {
 		}
 	}
 
-	public static void check(){
+	public static bool check(){
 		hitIndex++;
 
 		if (hitIndex >= count*0.7) {
