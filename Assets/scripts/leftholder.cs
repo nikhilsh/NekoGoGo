@@ -29,12 +29,10 @@ public class leftholder : MonoBehaviour {
 	public static void check(){
 		hitIndex++;
 
-		if (hitIndex >= count*0.5) {
-			spriteRenderer.sprite = MoveSprite;
-			// UPDATE THE CAT
-			// SOMEHOW MAKE THE FUCKING CAT TAKE ANOTHER STEP!
-			destroyAllChild();
+		if (hitIndex >= count*0.7) {
+			return true;
 		}
+		return false;
 	}
 
 	public static void clearAllHalo(){
@@ -52,8 +50,8 @@ public class leftholder : MonoBehaviour {
 		listofleftpoints.Clear ();
 	}
 
-	void square(){
-		spriteRenderer.sprite = SquareSprite;
+	void square(Sprite square){
+		spriteRenderer.sprite = square;
 		count = 0;
 		hitIndex = 0;
 
@@ -106,8 +104,8 @@ public class leftholder : MonoBehaviour {
 		}
 	}
 
-	void circle(){
-		spriteRenderer.sprite = CircleSprite;
+	void circle(Sprite circle){
+		spriteRenderer.sprite = circle;
 		count = 0;
 		hitIndex = 0;
 		float radius = 3.0f;

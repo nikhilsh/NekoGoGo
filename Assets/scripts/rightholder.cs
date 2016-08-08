@@ -29,12 +29,10 @@ public class rightholder : MonoBehaviour {
 	public static void check(){
 		hitIndex++;
 
-		if (hitIndex >= count*0.5) {
-			spriteRenderer.sprite = MoveSprite;
-			// UPDATE THE CAT
-			// SOMEHOW MAKE THE FUCKING CAT TAKE ANOTHER STEP!
-			destroyAllChild();
+		if (hitIndex >= count*0.7) {
+			return true;
 		}
+		return false;
 	}
 
 	public static void clearAllHalo(){
