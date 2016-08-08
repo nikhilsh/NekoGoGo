@@ -42,6 +42,7 @@ public class rightholder : MonoBehaviour {
 			var temp = (Behaviour)child.GetComponent ("Halo");
 			temp.enabled = false;
 		}
+		hitIndex = 0;
 	}
 
 	public static void destroyAllChild(){
