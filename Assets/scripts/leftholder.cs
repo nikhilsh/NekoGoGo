@@ -49,6 +49,7 @@ public class leftholder : MonoBehaviour {
 		foreach (GameObject child in listofleftpoints) {
 			GameObject.Destroy(child);
 		}
+		listofleftpoints.Clear ();
 	}
 
 	void square(){
