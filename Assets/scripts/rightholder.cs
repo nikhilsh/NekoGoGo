@@ -38,7 +38,7 @@ public class rightholder : MonoBehaviour {
 	}
 
 	public static void clearAllHalo(){
-		for (int i = 0; i < listofrightpoints.Count; i++) {
+		foreach (GameObject child in listofrightpoints) {
 			var temp = (Behaviour)child.GetComponent ("Halo");
 			temp.enabled = false;
 		}
@@ -49,6 +49,7 @@ public class rightholder : MonoBehaviour {
 		foreach (GameObject child in listofrightpoints) {
 			GameObject.Destroy(child);
 		}
+		listofrightpoints.Clear ();
 	}
 
 	void square(){
