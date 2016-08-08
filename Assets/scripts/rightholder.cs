@@ -22,7 +22,7 @@ public class rightholder : MonoBehaviour {
 		initialise (shape);
 	}
 
-	void update(){
+	void Update(){
 		if (change) {
 			shape = mainholder.getRightShape ();
 			initialise (shape);

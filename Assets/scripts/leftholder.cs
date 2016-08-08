@@ -22,7 +22,7 @@ public class leftholder : MonoBehaviour {
 		initialise (shape);
 	}
 
-	void update(){
+	void Update(){
 		if (change) {
 			shape = mainholder.getLeftShape ();
 			initialise (shape);
