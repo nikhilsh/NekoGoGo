@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class leftholder : MonoBehaviour {
 	public Sprite SquareSprite;
@@ -28,7 +29,7 @@ public class leftholder : MonoBehaviour {
 	public static void check(){
 		hitIndex++;
 
-		if (hitIndex >= count*0.9) {
+		if (hitIndex >= count*0.75) {
 			spriteRenderer.sprite = MoveSprite;
 			// UPDATE THE CAT
 			// SOMEHOW MAKE THE FUCKING CAT TAKE ANOTHER STEP!

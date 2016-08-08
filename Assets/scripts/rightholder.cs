@@ -29,7 +29,7 @@ public class rightholder : MonoBehaviour {
 	public static void check(){
 		hitIndex++;
 
-		if (hitIndex >= count*0.9) {
+		if (hitIndex >= count*0.75) {
 			spriteRenderer.sprite = MoveSprite;
 			// UPDATE THE CAT
 			// SOMEHOW MAKE THE FUCKING CAT TAKE ANOTHER STEP!
@@ -42,8 +42,6 @@ public class rightholder : MonoBehaviour {
 			GameObject.Destroy(child);
 		}
 	}
-
-
 
 	void square(){
 
@@ -72,6 +70,7 @@ public class rightholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name =  ""+count;
 					count++;
+					listofpoints.Add (temp);
 				}
 			} else if (sides == 2) {
 				// bottom
@@ -82,6 +81,7 @@ public class rightholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name =  ""+count;
 					count++;
+					listofpoints.Add (temp);
 				}
 			} else {
 				// left
@@ -92,6 +92,7 @@ public class rightholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name = ""+count;
 					count++;
+					listofpoints.Add (temp);
 				}
 			}
 		}
@@ -108,6 +109,7 @@ public class rightholder : MonoBehaviour {
 			temp.transform.position += temp.transform.parent.position;
 			temp.name = ""+count;
 			count++;
+			listofpoints.Add (temp);
 		}
 	}
 }
