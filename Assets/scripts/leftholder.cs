@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class leftholder : MonoBehaviour {
-	
+
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
 	public GameObject urstoff;
@@ -47,7 +47,7 @@ public class leftholder : MonoBehaviour {
 	}
 
 	public static bool check(){
-		
+
 		if (hitIndex >= count*0.5) {
 			return true;
 		}
