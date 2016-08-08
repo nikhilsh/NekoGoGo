@@ -29,11 +29,17 @@ public class leftholder : MonoBehaviour {
 	public static void check(){
 		hitIndex++;
 
-		if (hitIndex >= count*0.75) {
+		if (hitIndex >= count*0.5) {
 			spriteRenderer.sprite = MoveSprite;
 			// UPDATE THE CAT
 			// SOMEHOW MAKE THE FUCKING CAT TAKE ANOTHER STEP!
 			destroyAllChild();
+		}
+	}
+
+	public static void clearAllHalo(){
+		foreach (GameObject child in listofpoints) {
+			child.GetComponent ("Halo") == false;
 		}
 	}
 
