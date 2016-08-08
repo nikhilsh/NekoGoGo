@@ -20,10 +20,10 @@ public class PointScript : MonoBehaviour
 
 				if (!halo.enabled) {
 					if (string.Compare (hit.transform.parent.name, "holderleft") == 0) {
-						leftholder.check ();
+						leftholder.hit ();
 						halo.enabled = true;
 					} else if (string.Compare (hit.transform.parent.name, "holderright") == 0) {
-						rightholder.check ();
+						rightholder.hit ();
 						halo.enabled = true;
 					}
 
