@@ -39,7 +39,8 @@ public class leftholder : MonoBehaviour {
 
 	public static void clearAllHalo(){
 		foreach (GameObject child in listofpoints) {
-			child.GetComponent ("Halo") == false;
+			var temp = (Behaviour)child.GetComponent ("Halo");
+			temp.enabled = false;
 		}
 	}
 

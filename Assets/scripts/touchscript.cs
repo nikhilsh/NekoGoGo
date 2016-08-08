@@ -13,6 +13,9 @@ public class touchscript : MonoBehaviour {
 				mousePosition = touch.position;
 				mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 				transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+			} else if (touch.phase == TouchPhase.Ended){
+				rightholder.clearAllHalo ();
+				leftholder.clearAllHalo ();
 			}
 		}
 	}
