@@ -10,6 +10,7 @@ public class leftholder : MonoBehaviour {
 	static int hitIndex = -1;
 	private static SpriteRenderer spriteRenderer; 
 	Sprite publicSprite;
+	static List<GameObject> listofpoints = new List<GameObject>();
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,6 +32,13 @@ public class leftholder : MonoBehaviour {
 			spriteRenderer.sprite = MoveSprite;
 			// UPDATE THE CAT
 			// SOMEHOW MAKE THE FUCKING CAT TAKE ANOTHER STEP!
+			destroyAllChild();
+		}
+	}
+
+	public static void destroyAllChild(){
+		foreach (GameObject child in listofpoints) {
+			GameObject.Destroy(child);
 		}
 	}
 
@@ -49,6 +57,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name = ""+count;
 					count++;
+					listofpoints.Add (temp);
 				}
 			} else if (sides == 1) {
 				// right
@@ -59,6 +68,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name =  ""+count;
 					count++;
+					listofpoints.Add (temp);
 				}
 			} else if (sides == 2) {
 				// bottom
@@ -69,6 +79,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name =  ""+count;
 					count++;
+					listofpoints.Add (temp);
 				}
 			} else {
 				// left
@@ -79,6 +90,7 @@ public class leftholder : MonoBehaviour {
 					temp.transform.position += temp.transform.parent.position;
 					temp.name = ""+count;
 					count++;
+					listofpoints.Add (temp);
 				}
 			}
 		}
@@ -95,6 +107,7 @@ public class leftholder : MonoBehaviour {
 			temp.transform.position += temp.transform.parent.position;
 			temp.name = ""+count;
 			count++;
+			listofpoints.Add (temp);
 		}
 	}
 
