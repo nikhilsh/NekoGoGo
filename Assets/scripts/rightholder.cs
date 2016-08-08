@@ -3,8 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class rightholder : MonoBehaviour {
-	static GameObject thisgameobject;
-	static GameObject urstoff;
+
+	public Sprite SquareSprite;
+	public Sprite CircleSprite;
+	public GameObject urstoff;
+
+	string shape;
 	static int count = -1;
 	static int hitIndex = -1;
 	private static SpriteRenderer spriteRenderer; 
@@ -12,20 +16,22 @@ public class rightholder : MonoBehaviour {
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		urstoff = mainholder.getUrstoff ();
-		thisgameobject = gameObject;
+		shape = mainholder.getLeftShape ();
+		initialise (shape);
 	}
 
-	public static void initialise(string shape){
+	void initialise(string shape){
 		hitIndex = 0;
-		List<float[]> coordinates;
+		List<float[]> coordinates ;
 		if (string.Compare (shape, "square") == 0) {
 			coordinates = mainholder.getSquareCoordinates ();
 			count = coordinates.Count;
+			spriteRenderer.sprite = SquareSprite;
 			//square ();
 		} else if (string.Compare (shape, "circle") == 0){
 			coordinates = mainholder.getCircleCoordinates ();
 			count = coordinates.Count;
+			spriteRenderer.sprite = CircleSprite;
 			//circle ();
 		} else {
 			coordinates = new List<float[]> ();
@@ -33,7 +39,7 @@ public class rightholder : MonoBehaviour {
 
 		for (int i = 0; i < coordinates.Count; i++) {
 			GameObject temp = Instantiate (urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), Quaternion.identity) as GameObject;
-			temp.transform.parent = thisgameobject.transform;
+			temp.transform.parent = gameObject.transform;
 			temp.transform.position += temp.transform.parent.position;
 			temp.name = ""+count;
 			count++;

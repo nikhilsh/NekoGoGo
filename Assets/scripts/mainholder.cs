@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class mainholder : MonoBehaviour {
-	public static Sprite SquareSprite;
-	public static Sprite CircleSprite;
-	public static GameObject urstoff;
+	public static string leftShape;
+	public static string rightShape;
+
+	void Start(){
+		leftShape = "square";
+		rightShape = "circle";
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -15,24 +19,12 @@ public class mainholder : MonoBehaviour {
 		}
 	}
 
-	public static void setLeftHolder(string shape){
-		leftholder.initialise (shape);
+	public static string getLeftShape(){
+		return leftShape;
 	}
 
-	public static void setRightHolder(string shape){
-		rightholder.initialise (shape);
-	}
-
-	public static GameObject getUrstoff(){
-		return urstoff;
-	}
-
-	public static Sprite getSquareSprite(){
-		return SquareSprite;
-	}
-
-	public static Sprite getCircleSprite(){
-		return CircleSprite;
+	public static string getRightShape(){
+		return rightShape;
 	}
 
 	public static List<float[]> getSquareCoordinates(){
