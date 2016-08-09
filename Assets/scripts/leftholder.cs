@@ -58,11 +58,19 @@ public class leftholder : MonoBehaviour {
 		}
 
 		for (int i = 0; i < coordinates.Count; i++) {
-			GameObject temp = Instantiate (urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), Quaternion.identity) as GameObject;
-			temp.transform.parent = gameObject.transform;
-			temp.transform.position += temp.transform.parent.position;
+//			GameObject temp = Instantiate (urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), Quaternion.identity) as GameObject;
+//			temp.transform.parent = gameObject.transform;
+//			temp.transform.position += temp.transform.parent.position;
+//			temp.name = ""+i;
+//			listofurstoff.Add (temp);
+
+			GameObject temp = Instantiate(urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), transform.rotation) as GameObject;
+			// temp.velocity = transform.TransformDirection( Vector3 (0, 1,     speed));
+			temp.transform.parent = transform;
+			temp.transform.localPosition = new Vector3 (coordinates[i][0], coordinates[i][1], 0);
 			temp.name = ""+i;
 			listofurstoff.Add (temp);
+
 		}
 
 		change = false;
