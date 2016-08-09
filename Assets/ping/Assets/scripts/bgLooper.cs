@@ -17,8 +17,8 @@ public class bgLooper : MonoBehaviour {
 	public float movementMultiplier;
 	private float moveDistance;
 
-	public float endPoint = -24.0f;
-	public float startPoint = 37.44f;
+	public float endPoint;
+	public float startPoint;
 
 	// Use this for initialization
 	void Start () {
@@ -53,7 +53,7 @@ public class bgLooper : MonoBehaviour {
 		}
 
 
-		if (transform.position.x <= -24.0f) {
+		if (transform.position.x <= endPoint) {
 			Debug.Log("SPAWN CLOUD");
 			newBG ();
 		
@@ -71,7 +71,7 @@ public class bgLooper : MonoBehaviour {
 
 	void newBG(){
 		
-		Instantiate (addOn,  new Vector3 (37.44f, transform.position.y, transform.position.z), transform.rotation);
+		Instantiate (addOn,  new Vector3 (startPoint, transform.position.y, transform.position.z), transform.rotation);
 		Destroy(this.gameObject);
 	
 	}

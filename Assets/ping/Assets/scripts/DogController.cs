@@ -12,6 +12,7 @@ public class DogController : MonoBehaviour {
 	public GameObject sweatAnim;
 
 	public GameObject explosion;
+	public GameObject dogBark;
 
 	public float moveSpeed = 3.0f;
 	public float tooCloseDistance = 5.0f;
@@ -26,6 +27,8 @@ public class DogController : MonoBehaviour {
 	public bool initialized = false;
 	public bool gameOver = false;
 
+
+
 	Animator animator;
 
 	const int STATE_NOBARK = 0;
@@ -36,11 +39,21 @@ public class DogController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = this.GetComponent<Animator> ();
+		//camera = GetComponent<Camera>();
+
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (dog.position.x > 9.9 && dog.position.x < -10.85) {
+			dogBark.SetActive (true);
+		} else {
+			dogBark.SetActive (false);
+		
+		}
+
 
 		if (Input.GetKeyDown (KeyCode.F)){
 			addScore (50);
