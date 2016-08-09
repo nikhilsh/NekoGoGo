@@ -7,6 +7,7 @@ public class Boundary
 	public Vector3 cloud_3_posMin, cloud_3_posMax;
 	public Vector3 cloud_2_posMin, cloud_2_posMax;
 	public Vector3 cloud_1_posMin, cloud_1_posMax;
+	public Vector3 airplane_posMin, airplane_posMax;
 }
 
 public class StartMenu_Animation : MonoBehaviour {
@@ -14,18 +15,35 @@ public class StartMenu_Animation : MonoBehaviour {
 	private bool cloud_3_dirRight = true;
 	private bool cloud_2_dirRight = true;
 	private bool cloud_1_dirRight = true;
+	private bool airplane_up = true;
 
 	public float speed;
+	public float flight_speed;
 	public Boundary boundary;
 	public GameObject cloud_3;
 	public GameObject cloud_2;
 	public GameObject cloud_1;
+	public GameObject airplane;
 
 	void Update () {
-		Debug.Log (cloud_1.transform.position.x);
+		Debug.Log (airplane.transform.position.y);
 		animate_cloud_3 ();
 		animate_cloud_2 ();
 		animate_cloud_1 ();
+		animate_airplane ();
+	}
+
+	private void animate_airplane() {
+		if (airplane_up)
+			airplane.transform.Translate (Vector3.up * flight_speed * Time.deltaTime);
+		else
+			airplane.transform.Translate (-Vector3.up * flight_speed * Time.deltaTime);
+		if (airplane.transform.position.y >= boundary.airplane_posMax.y) {
+			airplane_up = false;
+		}
+		if (airplane.transform.position.y <= boundary.airplane_posMin.y) {
+			airplane_up = true;
+		}
 	}
 
 	private void animate_cloud_3() {

@@ -13,7 +13,7 @@ public class StartMenu_Button : MonoBehaviour {
 
 	public void startGame() {
 		audio.PlayOneShot (click, 2.0f);
-		Application.LoadLevel ("DUMMY_GameStart");
+		Application.LoadLevel ("TouchInputScene");
 	}
 	public void customise() {
 		audio.PlayOneShot (click, 2.0f);

@@ -114,7 +114,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  flight_speed: 3
   boundary:
     cloud_3_posMin: {x: 995, y: 0, z: 0}
     cloud_3_posMax: {x: 1115, y: 0, z: 0}
@@ -357,9 +358,12 @@ MonoBehaviour:
     cloud_2_posMax: {x: 560, y: 0, z: 0}
     cloud_1_posMin: {x: 320, y: 0, z: 0}
     cloud_1_posMax: {x: 400, y: 0, z: 0}
+    airplane_posMin: {x: 0, y: 545, z: 0}
+    airplane_posMax: {x: 0, y: 555, z: 0}
   cloud_3: {fileID: 2049594615}
   cloud_2: {fileID: 967921116}
   cloud_1: {fileID: 2126756499}
+  airplane: {fileID: 286535397}
 --- !u!1 &580691260
 GameObject:
   m_ObjectHideFlags: 0
