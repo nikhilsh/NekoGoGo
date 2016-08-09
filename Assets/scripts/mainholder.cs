@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class mainholder : MonoBehaviour {
-	public static string leftShape = "triangle";
-	public static string rightShape = "star";
+	public static string leftShape = "circle";
+	public static string rightShape = "circle";
 	public static string[] shapes = { "square", "circle", "star", "triangle"};
 
 	// Update is called once per frame
