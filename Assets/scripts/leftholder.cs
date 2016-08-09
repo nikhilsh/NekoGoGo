@@ -8,12 +8,12 @@ public class leftholder : MonoBehaviour {
 	public Sprite StarSprite;
 	public GameObject urstoff;
 
+	static float rotateAngle;
 	string shape;
 	static int count = -1;
 	static int hitIndex = -1;
 	private static SpriteRenderer spriteRenderer; 
 	static List<GameObject> listofurstoff = new List<GameObject>();
-	static GameObject thisGameObject;
 
 	public static bool change = false;
 
@@ -21,18 +21,19 @@ public class leftholder : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		shape = mainholder.getLeftShape ();
 		initialise (shape);
-		thisGameObject = gameObject;
 	}
 
 	void Update(){
 		if (change) {
 			shape = mainholder.getLeftShape ();
 			initialise (shape);
+			rotate ();
 		}
 	}
 
-	public static void changeShape(){
+	public static void changeShape(float angle){
 		change = true;
+		rotateAngle = angle;
 	}
 
 	void initialise(string shape){
@@ -95,8 +96,8 @@ public class leftholder : MonoBehaviour {
 		listofurstoff.Clear ();
 	}
 
-	public static void rotate (int angle){
-		thisGameObject.transform.Rotate (Vector3.forward * angle);
+	void rotate (){
+		gameObject.transform.Rotate (Vector3.forward * rotateAngle);
 	}
 
 //	void square(){

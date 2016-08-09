@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class rightholder : MonoBehaviour {
-
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
 	public Sprite StarSprite;
 	public GameObject urstoff;
 
+	static float rotateAngle;
 	string shape;
 	static int count = -1;
 	static int hitIndex = -1;
 	private static SpriteRenderer spriteRenderer; 
 	static List<GameObject> listofurstoff = new List<GameObject>();
-	static GameObject thisGameObject;
 
 	public static bool change = false;
 
@@ -22,18 +21,19 @@ public class rightholder : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		shape = mainholder.getRightShape ();
 		initialise (shape);
-		thisGameObject = gameObject;
 	}
 
 	void Update(){
 		if (change) {
 			shape = mainholder.getRightShape ();
 			initialise (shape);
+			rotate ();
 		}
 	}
 
-	public static void changeShape(){
+	public static void changeShape(float angle){
 		change = true;
+		rotateAngle = angle;
 	}
 
 
@@ -97,8 +97,8 @@ public class rightholder : MonoBehaviour {
 		listofurstoff.Clear ();
 	}
 
-	public static void rotate (int angle){
-		thisGameObject.transform.Rotate (Vector3.forward * angle);
+	void rotate (){
+		gameObject.transform.Rotate (Vector3.forward * rotateAngle);
 	}
 
 //	void square(){

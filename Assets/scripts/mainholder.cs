@@ -19,12 +19,9 @@ public class mainholder : MonoBehaviour {
 			rightShape = shapes [randomnumber];
 
 			randomnumber = Random.Range (0, 361);
-			leftholder.rotate (randomnumber);
+			leftholder.changeShape (randomnumber);
 			randomnumber = Random.Range (0, 361);
-			rightholder.rotate (randomnumber);
-
-			leftholder.changeShape ();
-			rightholder.changeShape ();
+			rightholder.changeShape (randomnumber);
 		}
 	}
 
