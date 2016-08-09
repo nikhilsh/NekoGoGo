@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class mainholder : MonoBehaviour {
-	public static string leftShape = "circle";
+	public static string leftShape = "hexagon";
 	public static string rightShape = "circle";
-	public static string[] shapes = { "square", "circle", "star", "triangle"};
+	public static string[] shapes = { "square", "circle", "star", "triangle", "hexagon"};
 
 	// Update is called once per frame
 	void Update () {
@@ -138,6 +138,32 @@ public class mainholder : MonoBehaviour {
 			// generate points between these 2 endpoints
 			for (int step=0 ; step<30 ; step++){
 				float[] temp = { point1[0]+(step*step_x) + triOffset[0], point1[1]+(step*step_y) + triOffset[1] };
+				coordinates.Add (temp);
+			}
+		}
+		return coordinates;
+	}
+
+	public static List<float[]> getHexagonCoordinates(){
+		List<float[]> coordinates = new List<float[]> ();
+		List<float[]> endpoints = new List<float[]> ();
+
+		for (int i=0; i<7 ; i++){
+			int angle_deg = 60 * i + 30;
+			var angle_rad = Mathf.PI / 180 * angle_deg;
+			float[] tempEndPoint = { 3.0f * Mathf.Cos (angle_rad), 3.0f * Mathf.Sin (angle_rad) };
+			endpoints.Add (tempEndPoint);
+		}
+
+		for (int i=1 ; i<endpoints.Count ; i++){
+			float[] point1 = endpoints [i - 1];
+			float[] point2 = endpoints [i];
+			float step_x = ( point2[0] - point1[0] )/10.0f;
+			float step_y = ( point2[1] - point1[1] )/10.0f;
+
+			// generate points between these 2 endpoints
+			for (int step=0 ; step<10 ; step++){
+				float[] temp = { point1[0]+(step*step_x), point1[1]+(step*step_y) };
 				coordinates.Add (temp);
 			}
 		}
