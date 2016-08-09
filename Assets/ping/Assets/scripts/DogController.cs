@@ -27,6 +27,11 @@ public class DogController : MonoBehaviour {
 	public bool initialized = false;
 	public bool gameOver = false;
 
+	public AudioClip barking;
+	public AudioClip endGameSound;
+	//AudioSource audio;
+	public float soundTime;
+	private float soundTimeCounter;
 
 
 	Animator animator;
@@ -41,7 +46,7 @@ public class DogController : MonoBehaviour {
 		animator = this.GetComponent<Animator> ();
 		//camera = GetComponent<Camera>();
 
-
+		//audio = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -70,8 +75,21 @@ public class DogController : MonoBehaviour {
 		} else if (cat.position.x - dog.position.x <= tooCloseDistance && cat.position.x - dog.position.x >0){
 			changeState (STATE_BARK);
 			tooClose = true;
+			//audio.PlayOneShot (barking, 2.0f);
+			//AudioSource.PlayClipAtPoint(barking, transform.position); 
+			soundTimeCounter -= Time.deltaTime;
+
+			if (soundTimeCounter <= 0) {
+			
+				AudioSource.PlayClipAtPoint (barking, transform.position);
+				soundTimeCounter = soundTime;
+			}
+
+			Debug.Log("barking!");
 		} else if (cat.position.x - dog.position.x <= 0 && gameOver== false){
 			endGame();
+			//audio.PlayOneShot (endGameSound, 2.0f);
+			AudioSource.PlayClipAtPoint(endGameSound, transform.position); 
 		}
 
 		if (tooClose) {
