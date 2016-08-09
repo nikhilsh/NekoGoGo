@@ -6,6 +6,7 @@ public class leftholder : MonoBehaviour {
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
 	public Sprite StarSprite;
+	public Sprite TriangleSprite;
 	public GameObject urstoff;
 
 	static float rotateAngle;
@@ -53,6 +54,10 @@ public class leftholder : MonoBehaviour {
 			coordinates = mainholder.getStarCoordinates ();
 			count = coordinates.Count;
 			spriteRenderer.sprite = StarSprite;
+		} else if (string.Compare (shape, "triangle") == 0) { 
+			coordinates = mainholder.getTriangleCoordinates ();
+			count = coordinates.Count;
+			spriteRenderer.sprite = TriangleSprite;
 		} else {
 			coordinates = new List<float[]> ();
 		}

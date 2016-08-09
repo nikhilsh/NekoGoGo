@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class mainholder : MonoBehaviour {
-	public static string leftShape = "circle";
-	public static string rightShape = "circle";
-	public static string[] shapes = { "square", "circle", "star"};
+	public static string leftShape = "triangle";
+	public static string rightShape = "star";
+	public static string[] shapes = { "square", "circle", "star", "triangle"};
 
 	// Update is called once per frame
 	void Update () {
@@ -46,29 +46,29 @@ public class mainholder : MonoBehaviour {
 		for (int sides=0 ; sides<4 ; sides++) {
 			if (sides == 0) {
 				// top
-				int y = 2;
-				for (float x = -2; x <= 2; x += 0.5f) {
+				float y = 2.5f;
+				for (float x = -2.5f; x <= 2.5f; x += 0.25f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
 			} else if (sides == 1) {
 				// right
-				int x = 2;
-				for (float y = 2; y >= -2; y -= 0.5f) {
+				float x = 2.5f;
+				for (float y = 2.5f; y >= -2.5f; y -= 0.25f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
 			} else if (sides == 2) {
 				// bottom
-				int y = -2;
-				for (float x = 2; x >= -2; x -= 0.5f) {
+				float y = -2.5f;
+				for (float x = 2.5f; x >= -2.5f; x -= 0.25f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
 			} else {
 				// left
-				int x = -2;
-				for (float y = -2; y <= 2; y += 0.5f) {
+				float x = -2.5f;
+				for (float y = -2.5f; y <= 2.5f; y += 0.25f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
@@ -112,6 +112,34 @@ public class mainholder : MonoBehaviour {
 				coordinates.Add (temp);
 			}
 
+		}
+		return coordinates;
+	}
+
+	public static List<float[]> getTriangleCoordinates(){
+		float[] triOffset = { 0.0f, 0.7f };
+		List<float[]> coordinates = new List<float[]> ();
+		List<float[]> endpoints = new List<float[]> ();
+		float[] temp1 = { 0, 3.0f * Mathf.Cos (Mathf.PI/3.0f) };
+		endpoints.Add(temp1);
+		float[] temp2 = {-3.0f, -3.0f};
+		endpoints.Add(temp2);
+		float[] temp3 = {3.0f,-3.0f};
+		endpoints.Add(temp3);
+		float[] temp4 = {0,3.0f * Mathf.Cos (Mathf.PI/3.0f)};
+		endpoints.Add(temp4);
+
+		for (int i=1 ; i<endpoints.Count ; i++){
+			float[] point1 = endpoints [i - 1];
+			float[] point2 = endpoints [i];
+			float step_x = ( point2[0] - point1[0] )/30.0f;
+			float step_y = ( point2[1] - point1[1] )/30.0f;
+
+			// generate points between these 2 endpoints
+			for (int step=0 ; step<30 ; step++){
+				float[] temp = { point1[0]+(step*step_x) + triOffset[0], point1[1]+(step*step_y) + triOffset[1] };
+				coordinates.Add (temp);
+			}
 		}
 		return coordinates;
 	}
