@@ -6,10 +6,21 @@ public class mainholder : MonoBehaviour {
 	public static string leftShape = "hexagon";
 	public static string rightShape = "circle";
 	public static string[] shapes = { "square", "circle", "star", "triangle", "hexagon"};
+	public static float tempLoggedTime;
+
+	void Start(){
+		tempLoggedTime = Time.deltaTime;
+	}
 
 	// Update is called once per frame
 	void Update () {
 		if (leftholder.check () && rightholder.check ()) {
+			// call ng ping's script!! HERE ADD THE FUCKING POINTS 
+			// totalScore += calculateScore(Time.deltaTime-temploggedTime);
+
+			// reset tempLoggedTime;
+			tempLoggedTime = Time.deltaTime;
+
 			leftholder.destroyAllChild ();
 			rightholder.destroyAllChild ();
 
@@ -22,6 +33,16 @@ public class mainholder : MonoBehaviour {
 			leftholder.changeShape (randomnumber);
 			randomnumber = Random.Range (0, 361);
 			rightholder.changeShape (randomnumber);
+		}
+	}
+
+	public static float calculateScore(int timeElapsed){
+		if (timeElapsed > 5.0f) {
+			return 50;
+		} else if ( timeElapsed == 0.0f){
+			return 250;
+		} else {
+			return (250 - timeElapsed*40);
 		}
 	}
 
