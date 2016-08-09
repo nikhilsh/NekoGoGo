@@ -34,7 +34,7 @@ public class leftholder : MonoBehaviour {
 		SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
 		renderer.sprite = LeftHandSprite;
 		go.transform.localScale = new Vector3 (-0.15F, 0.15F, 1.0F);
-		go.transform.position = new Vector3 (spriteRenderer.bounds.center.x, spriteRenderer.bounds.center.y-1.95F, 0);
+		go.transform.position = new Vector3 (spriteRenderer.bounds.center.x, spriteRenderer.bounds.center.y-3.9F, 0);
 		go.transform.Rotate (Vector3.forward * -30); 
 		
 	}

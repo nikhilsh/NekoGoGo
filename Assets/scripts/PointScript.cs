@@ -10,6 +10,7 @@ public class PointScript : MonoBehaviour
 			if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) {
 				leftholder.endIntroduction ();
 				rightholder.endIntroduction ();
+
 				var ray = Camera.main.ScreenPointToRay (touch.position);
 				var halo = (Behaviour)GetComponent ("Halo");
 				RaycastHit hit;
