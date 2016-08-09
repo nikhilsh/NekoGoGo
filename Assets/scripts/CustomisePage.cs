@@ -15,10 +15,6 @@ public class CustomisePage : MonoBehaviour {
 	void Start () {
 		counter = 0;
 		number_of_skins = 4;
-		skin_0.SetActive (true);
-		skin_1.SetActive (false);
-		skin_2.SetActive (false);
-		skin_3.SetActive (false);
 	}
 	
 	// Update is called once per frame
