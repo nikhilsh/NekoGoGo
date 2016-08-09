@@ -6,6 +6,7 @@ public class rightholder : MonoBehaviour {
 
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
+	public Sprite StarSprite;
 	public GameObject urstoff;
 
 	string shape;
@@ -47,6 +48,9 @@ public class rightholder : MonoBehaviour {
 			count = coordinates.Count;
 			spriteRenderer.sprite = CircleSprite;
 			//circle ();
+		} else if (string.Compare (shape, "star") == 0) { 
+			coordinates = mainholder.getStarCoordinates ();
+			count = coordinates.Count;
 		} else {
 			coordinates = new List<float[]> ();
 		}

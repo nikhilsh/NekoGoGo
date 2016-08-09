@@ -6,6 +6,7 @@ public class leftholder : MonoBehaviour {
 
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
+	public Sprite StarSprite;
 	public GameObject urstoff;
 
 	string shape;
@@ -35,17 +36,21 @@ public class leftholder : MonoBehaviour {
 
 	void initialise(string shape){
 		hitIndex = 0;
-		List<float[]> coordinates ;
+		List<float[]> coordinates;
 		if (string.Compare (shape, "square") == 0) {
 			coordinates = mainholder.getSquareCoordinates ();
 			count = coordinates.Count;
 			spriteRenderer.sprite = SquareSprite;
 			//square ();
-		} else if (string.Compare (shape, "circle") == 0){
+		} else if (string.Compare (shape, "circle") == 0) {
 			coordinates = mainholder.getCircleCoordinates ();
 			count = coordinates.Count;
 			spriteRenderer.sprite = CircleSprite;
 			//circle ();
+		} else if (string.Compare (shape, "star") == 0) { 
+			coordinates = mainholder.getStarCoordinates ();
+			count = coordinates.Count;
+			spriteRenderer.sprite = StarSprite;
 		} else {
 			coordinates = new List<float[]> ();
 		}
