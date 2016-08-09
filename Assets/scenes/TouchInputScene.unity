@@ -202,8 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SquareSprite: {fileID: 21300000, guid: e58bc3a6a283c4372a948e63bd48ccec, type: 3}
-  CircleSprite: {fileID: 21300000, guid: e05b18947c212459692d6dac36f192ec, type: 3}
-  StarSprite: {fileID: 21300000, guid: 787298aa274294392b88051f850174e7, type: 3}
+  CircleSprite: {fileID: 21300000, guid: a3d2895bc609048189e09480466e0be0, type: 3}
+  StarSprite: {fileID: 21300000, guid: 4cbf06d2092444d63ab555028bdeb340, type: 3}
   urstoff: {fileID: 124468, guid: 744c72022d11c4841ba07e2bea698ee7, type: 2}
 --- !u!4 &147376870
 Transform:
@@ -339,7 +339,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
+  m_BackGroundColor: {r: 0.8313726, g: 0.9450981, b: 0.9607844, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -650,8 +650,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SquareSprite: {fileID: 21300000, guid: e58bc3a6a283c4372a948e63bd48ccec, type: 3}
-  CircleSprite: {fileID: 21300000, guid: e05b18947c212459692d6dac36f192ec, type: 3}
-  StarSprite: {fileID: 21300000, guid: 787298aa274294392b88051f850174e7, type: 3}
+  CircleSprite: {fileID: 21300000, guid: a3d2895bc609048189e09480466e0be0, type: 3}
+  StarSprite: {fileID: 21300000, guid: 4cbf06d2092444d63ab555028bdeb340, type: 3}
   urstoff: {fileID: 124468, guid: 744c72022d11c4841ba07e2bea698ee7, type: 2}
 --- !u!4 &1785587485
 Transform:
