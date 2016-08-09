@@ -7,9 +7,13 @@ public class mainholder : MonoBehaviour {
 	public static string rightShape = "circle";
 	public static string[] shapes = { "square", "circle", "star", "triangle", "hexagon"};
 	public static float tempLoggedTime;
+	GameObject theCat;
+	CatController _catController;
 
 	void Start(){
 		tempLoggedTime = Time.deltaTime;
+		theCat = GameObject.FindWithTag ("CatController");
+		_catController = theCat.GetComponent<CatController>();
 	}
 
 	// Update is called once per frame
@@ -17,6 +21,7 @@ public class mainholder : MonoBehaviour {
 		if (leftholder.check () && rightholder.check ()) {
 			// call ng ping's script!! HERE ADD THE FUCKING POINTS 
 			// totalScore += calculateScore(Time.deltaTime-temploggedTime);
+			_catController.addscore( (int) calculateScore(Time.deltaTime-tempLoggedTime));
 
 			// reset tempLoggedTime;
 			tempLoggedTime = Time.deltaTime;
@@ -36,7 +41,7 @@ public class mainholder : MonoBehaviour {
 		}
 	}
 
-	public static float calculateScore(int timeElapsed){
+	public static float calculateScore(float timeElapsed){
 		if (timeElapsed > 5.0f) {
 			return 50;
 		} else if ( timeElapsed == 0.0f){
