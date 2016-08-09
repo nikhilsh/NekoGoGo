@@ -28,6 +28,13 @@ public class CatController : MonoBehaviour {
 	private float runTime;
 	public float runTimeMultiplier = 0.025f;
 
+	//SOUNDS
+	public AudioClip meowing;
+	public AudioClip startMeow;
+	//AudioSource audio;
+
+
+
 	private int tempAnim;
 
 	Animator animator;
@@ -45,6 +52,7 @@ public class CatController : MonoBehaviour {
 		myCollider = GetComponent<Collider2D> ();
 		animator = this.GetComponent<Animator> ();
 
+		//audio = GetComponent<AudioSource> ();
 	
 	}
 
@@ -106,7 +114,7 @@ public class CatController : MonoBehaviour {
 
 		
 		if (initialized || Input.GetKeyDown (KeyCode.A)) {
-			
+			AudioSource.PlayClipAtPoint(startMeow, transform.position);  
 			animator.SetBool ("initialized", true);
 			changeState (STATE_WALK);
 		}
@@ -136,10 +144,14 @@ public class CatController : MonoBehaviour {
 	}
 
 	public void addscore(int points){
+		//audio.PlayOneShot (meowing, 2.0f);
+		AudioSource.PlayClipAtPoint(meowing, transform.position);  
 		_running = true;
 		runTime = points * runTimeMultiplier;
 
 	}
+
+
 
 	/*void catRun(float score){
 		// function to make cat run for period of time proportional to score added

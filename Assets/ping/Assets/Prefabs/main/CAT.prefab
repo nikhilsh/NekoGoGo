@@ -206,6 +206,8 @@ MonoBehaviour:
   initialized: 0
   jumpHeight: 4
   runTimeMultiplier: 50
+  meowing: {fileID: 8300000, guid: ef361b62fcee1c84599052e18b455291, type: 3}
+  startMeow: {fileID: 8300000, guid: dd1ce79552476cb4d8272cbfc3ef160b, type: 3}
   _currentAnimationState: 0
 --- !u!212 &21223116
 SpriteRenderer:
