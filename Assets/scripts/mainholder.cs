@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class mainholder : MonoBehaviour {
 	public static string leftShape = "star";
 	public static string rightShape = "star";
+	public static string[] shapes = { "square", "circle", "star"};
 
 	// Update is called once per frame
 	void Update () {
@@ -12,8 +13,16 @@ public class mainholder : MonoBehaviour {
 			leftholder.destroyAllChild ();
 			rightholder.destroyAllChild ();
 
-			leftShape = "square";
-			rightShape = "square";
+			int randomnumber = Random.Range (0,shapes.Length);
+			leftShape = shapes [randomnumber];
+			randomnumber = Random.Range (0,shapes.Length);
+			rightShape = shapes [randomnumber];
+
+			randomnumber = Random.Range (0, 361);
+			leftholder.rotate (randomnumber);
+			randomnumber = Random.Range (0, 361);
+			rightholder.rotate (randomnumber);
+
 			leftholder.changeShape ();
 			rightholder.changeShape ();
 		}

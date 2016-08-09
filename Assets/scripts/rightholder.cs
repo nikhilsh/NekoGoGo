@@ -14,6 +14,7 @@ public class rightholder : MonoBehaviour {
 	static int hitIndex = -1;
 	private static SpriteRenderer spriteRenderer; 
 	static List<GameObject> listofurstoff = new List<GameObject>();
+	static GameObject thisGameObject;
 
 	public static bool change = false;
 
@@ -21,6 +22,7 @@ public class rightholder : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		shape = mainholder.getRightShape ();
 		initialise (shape);
+		thisGameObject = gameObject;
 	}
 
 	void Update(){
@@ -51,6 +53,7 @@ public class rightholder : MonoBehaviour {
 		} else if (string.Compare (shape, "star") == 0) { 
 			coordinates = mainholder.getStarCoordinates ();
 			count = coordinates.Count;
+			spriteRenderer.sprite = StarSprite;
 		} else {
 			coordinates = new List<float[]> ();
 		}
@@ -92,6 +95,10 @@ public class rightholder : MonoBehaviour {
 		}
 		spriteRenderer.sprite = new Sprite ();
 		listofurstoff.Clear ();
+	}
+
+	public static void rotate (int angle){
+		thisGameObject.transform.Rotate (Vector3.forward * angle);
 	}
 
 //	void square(){

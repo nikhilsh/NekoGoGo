@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class leftholder : MonoBehaviour {
-
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
 	public Sprite StarSprite;
@@ -14,6 +13,7 @@ public class leftholder : MonoBehaviour {
 	static int hitIndex = -1;
 	private static SpriteRenderer spriteRenderer; 
 	static List<GameObject> listofurstoff = new List<GameObject>();
+	static GameObject thisGameObject;
 
 	public static bool change = false;
 
@@ -21,6 +21,7 @@ public class leftholder : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		shape = mainholder.getLeftShape ();
 		initialise (shape);
+		thisGameObject = gameObject;
 	}
 
 	void Update(){
@@ -92,6 +93,10 @@ public class leftholder : MonoBehaviour {
 		}
 		spriteRenderer.sprite = new Sprite ();
 		listofurstoff.Clear ();
+	}
+
+	public static void rotate (int angle){
+		thisGameObject.transform.Rotate (Vector3.forward * angle);
 	}
 
 //	void square(){
