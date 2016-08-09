@@ -86,7 +86,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278255369
-  m_Size: 1
+  m_Size: 0.6
 --- !u!135 &13531352
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -116,7 +116,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Size
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled

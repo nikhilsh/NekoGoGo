@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class rightholder : MonoBehaviour {
-
 	public Sprite SquareSprite;
 	public Sprite CircleSprite;
+	public Sprite StarSprite;
 	public GameObject urstoff;
 
+	static float rotateAngle;
 	string shape;
 	static int count = -1;
 	static int hitIndex = -1;
@@ -26,11 +27,13 @@ public class rightholder : MonoBehaviour {
 		if (change) {
 			shape = mainholder.getRightShape ();
 			initialise (shape);
+			rotate ();
 		}
 	}
 
-	public static void changeShape(){
+	public static void changeShape(float angle){
 		change = true;
+		rotateAngle = angle;
 	}
 
 
@@ -47,14 +50,25 @@ public class rightholder : MonoBehaviour {
 			count = coordinates.Count;
 			spriteRenderer.sprite = CircleSprite;
 			//circle ();
+		} else if (string.Compare (shape, "star") == 0) { 
+			coordinates = mainholder.getStarCoordinates ();
+			count = coordinates.Count;
+			spriteRenderer.sprite = StarSprite;
 		} else {
 			coordinates = new List<float[]> ();
 		}
 
 		for (int i = 0; i < coordinates.Count; i++) {
-			GameObject temp = Instantiate (urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), Quaternion.identity) as GameObject;
-			temp.transform.parent = gameObject.transform;
-			temp.transform.position += temp.transform.parent.position;
+//			GameObject temp = Instantiate (urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), Quaternion.identity) as GameObject;
+//			temp.transform.parent = gameObject.transform;
+//			temp.transform.position += temp.transform.parent.position;
+//			temp.name = ""+i;
+//			listofurstoff.Add (temp);
+
+			GameObject temp = Instantiate(urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), transform.rotation)  as GameObject;
+			// temp.velocity = transform.TransformDirection( Vector3 (0, 1,     speed));
+			temp.transform.parent = transform;
+			temp.transform.localPosition = new Vector3 (coordinates[i][0], coordinates[i][1], 0);
 			temp.name = ""+i;
 			listofurstoff.Add (temp);
 		}
@@ -64,7 +78,7 @@ public class rightholder : MonoBehaviour {
 
 	public static bool check(){
 
-		if (hitIndex >= count*0.5) {
+		if (hitIndex >= count*0.70) {
 			return true;
 		}
 		return false;
@@ -88,6 +102,10 @@ public class rightholder : MonoBehaviour {
 		}
 		spriteRenderer.sprite = new Sprite ();
 		listofurstoff.Clear ();
+	}
+
+	void rotate (){
+		gameObject.transform.Rotate (Vector3.forward * rotateAngle);
 	}
 
 //	void square(){
