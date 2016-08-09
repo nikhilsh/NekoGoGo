@@ -15,5 +15,9 @@ public class StartMenu_Button : MonoBehaviour {
 		audio.PlayOneShot (click, 2.0f);
 		Application.LoadLevel ("DUMMY_GameStart");
 	}
+	public void customise() {
+		audio.PlayOneShot (click, 2.0f);
+		Application.LoadLevel ("CustomisePage");
+	}
 		
 }
