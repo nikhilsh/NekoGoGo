@@ -33,7 +33,7 @@ public class leftholder : MonoBehaviour {
 		go = new GameObject("LeftHandSprite");
 		SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
 		renderer.sprite = LeftHandSprite;
-		go.transform.localScale = new Vector3 (0.15F, 0.15F, 1.0F);
+		go.transform.localScale = new Vector3 (-0.15F, 0.15F, 1.0F);
 		go.transform.position = new Vector3 (spriteRenderer.bounds.center.x, spriteRenderer.bounds.center.y-1.95F, 0);
 		go.transform.Rotate (Vector3.forward * -30); 
 		
@@ -46,7 +46,7 @@ public class leftholder : MonoBehaviour {
 		}
 		if (go) {
 			angle += 0.025F;
-			go.transform.position = new Vector3 (Mathf.Cos (angle * speed) * radius - 3.62F, Mathf.Sin (angle * speed) * radius - 1.75F, 0);		}
+			go.transform.position = new Vector3 (Mathf.Cos (angle * speed) * radius - 3.75F, Mathf.Sin (angle * speed) * radius - 1.75F, 0);		}
 	}
 
 	public static void endIntroduction() {

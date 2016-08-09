@@ -22,7 +22,7 @@ public class rightholder : MonoBehaviour {
 	private static GameObject go;
 	public static bool change = false;
 	float angle = 90.0F;
-	float speed = (2 * Mathf.PI) / 5;
+	float speed = (-2 * Mathf.PI) / 5;
 	float radius= 2.7F;
 
 	void Start () {
@@ -47,7 +47,7 @@ public class rightholder : MonoBehaviour {
 		}
 		if (go) {
 			angle -= 0.025F;
-			go.transform.position = new Vector3 (Mathf.Cos (angle * speed) * radius + 3.55F, Mathf.Sin (angle * speed) * radius - 1.7F, 0);
+			go.transform.position = new Vector3 (Mathf.Cos (angle * speed) * radius + 4F, Mathf.Sin (-angle * speed) * radius - 1.7F, 0);
 		} 
 	}
 
