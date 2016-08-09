@@ -13,6 +13,8 @@ public class CatController : MonoBehaviour {
 	public LayerMask whatIsGround;
 	private Collider2D myCollider;
 
+	public bool initialized = false;
+
 
 	public float jumpHeight;
 
@@ -103,7 +105,8 @@ public class CatController : MonoBehaviour {
 		}
 
 		
-		if (Input.GetKeyDown (KeyCode.A)) {
+		if (initialized || Input.GetKeyDown (KeyCode.A)) {
+			
 			animator.SetBool ("initialized", true);
 			changeState (STATE_WALK);
 		}
