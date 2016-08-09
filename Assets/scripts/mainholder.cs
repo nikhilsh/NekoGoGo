@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class mainholder : MonoBehaviour {
-	public static string leftShape = "hexagon";
+	public static string leftShape = "circle";
 	public static string rightShape = "circle";
 	public static string[] shapes = { "square", "circle", "star", "triangle", "hexagon"};
 	public static float tempLoggedTime;

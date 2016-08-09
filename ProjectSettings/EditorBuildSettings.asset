@@ -7,9 +7,3 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/TouchInputScene.unity
-  - enabled: 1
-    path: Assets/scenes/DUMMY_GameStart.unity
-  - enabled: 1
-    path: Assets/scenes/GameStartMenu.unity
-  - enabled: 1
-    path: Assets/scenes/TouchInputScene.unity

@@ -8,6 +8,8 @@ public class leftholder : MonoBehaviour {
 	public Sprite StarSprite;
 	public Sprite TriangleSprite;
 	public Sprite HexagonSprite;
+	public Sprite LeftHandSprite;
+
 	public GameObject urstoff;
 
 	static float rotateAngle;
@@ -17,20 +19,38 @@ public class leftholder : MonoBehaviour {
 	private static SpriteRenderer spriteRenderer; 
 	static List<GameObject> listofurstoff = new List<GameObject>();
 
+	private static GameObject go;
 	public static bool change = false;
+	float angle = 90.0F;
+	float speed = (2 * Mathf.PI) / 5;
+	float radius= 2.7F;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		shape = mainholder.getLeftShape ();
 		initialise (shape);
-	}
 
+		go = new GameObject("LeftHandSprite");
+		SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
+		renderer.sprite = LeftHandSprite;
+		go.transform.localScale = new Vector3 (0.15F, 0.15F, 1.0F);
+		go.transform.position = new Vector3 (spriteRenderer.bounds.center.x, spriteRenderer.bounds.center.y-1.95F, 0);
+		go.transform.Rotate (Vector3.forward * -30); 
+		
+	}
 	void Update(){
 		if (change) {
 			shape = mainholder.getLeftShape ();
 			initialise (shape);
 			rotate ();
 		}
+		if (go) {
+			angle += 0.025F;
+			go.transform.position = new Vector3 (Mathf.Cos (angle * speed) * radius - 3.62F, Mathf.Sin (angle * speed) * radius - 1.75F, 0);		}
+	}
+
+	public static void endIntroduction() {
+		Destroy (go);
 	}
 
 	public static void changeShape(float angle){
