@@ -78,7 +78,7 @@ public class rightholder : MonoBehaviour {
 
 	public static bool check(){
 
-		if (hitIndex >= count*0.75) {
+		if (hitIndex >= count*0.70) {
 			return true;
 		}
 		return false;
