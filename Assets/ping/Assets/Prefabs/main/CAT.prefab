@@ -17,7 +17,7 @@ GameObject:
   - 61: {fileID: 6106262}
   m_Layer: 9
   m_Name: CAT
-  m_TagString: Untagged
+  m_TagString: CatController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  initialized: 0
   jumpHeight: 4
   runTimeMultiplier: 50
   _currentAnimationState: 0
@@ -272,7 +273,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: CatController
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102292}
