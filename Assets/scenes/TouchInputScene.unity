@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad14a71ce499437ba10018b9d5e4a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SquareSprite: {fileID: 21300000, guid: 2b52e8e481ea549e39e1979f5b6380b9, type: 3}
+  SquareSprite: {fileID: 21300000, guid: e58bc3a6a283c4372a948e63bd48ccec, type: 3}
   CircleSprite: {fileID: 21300000, guid: e05b18947c212459692d6dac36f192ec, type: 3}
   StarSprite: {fileID: 21300000, guid: 787298aa274294392b88051f850174e7, type: 3}
   urstoff: {fileID: 124468, guid: 744c72022d11c4841ba07e2bea698ee7, type: 2}
@@ -413,11 +413,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 421830, guid: c873787ca311fba42947a1792d0ebb89, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 421830, guid: c873787ca311fba42947a1792d0ebb89, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c873787ca311fba42947a1792d0ebb89, type: 2}
@@ -520,15 +520,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 419910, guid: 13bd67824457a1f438d382ad15aea6eb, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 419910, guid: 13bd67824457a1f438d382ad15aea6eb, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 419910, guid: 13bd67824457a1f438d382ad15aea6eb, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13bd67824457a1f438d382ad15aea6eb, type: 2}
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cd64ba779cb4cfea2a0718713c2f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SquareSprite: {fileID: 21300000, guid: 2b52e8e481ea549e39e1979f5b6380b9, type: 3}
+  SquareSprite: {fileID: 21300000, guid: e58bc3a6a283c4372a948e63bd48ccec, type: 3}
   CircleSprite: {fileID: 21300000, guid: e05b18947c212459692d6dac36f192ec, type: 3}
   StarSprite: {fileID: 21300000, guid: 787298aa274294392b88051f850174e7, type: 3}
   urstoff: {fileID: 124468, guid: 744c72022d11c4841ba07e2bea698ee7, type: 2}

@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class mainholder : MonoBehaviour {
-	public static string leftShape = "star";
-	public static string rightShape = "star";
+	public static string leftShape = "circle";
+	public static string rightShape = "circle";
 	public static string[] shapes = { "square", "circle", "star"};
 
 	// Update is called once per frame
@@ -46,29 +46,29 @@ public class mainholder : MonoBehaviour {
 		for (int sides=0 ; sides<4 ; sides++) {
 			if (sides == 0) {
 				// top
-				int y = 3;
-				for (float x = -3; x <= 3; x += 0.5f) {
+				int y = 2;
+				for (float x = -2; x <= 2; x += 0.5f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
 			} else if (sides == 1) {
 				// right
-				int x = 3;
-				for (float y = 3; y >= -3; y -= 0.5f) {
+				int x = 2;
+				for (float y = 2; y >= -2; y -= 0.5f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
 			} else if (sides == 2) {
 				// bottom
-				int y = -3;
-				for (float x = 3; x >= -3; x -= 0.5f) {
+				int y = -2;
+				for (float x = 2; x >= -2; x -= 0.5f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
 			} else {
 				// left
-				int x = -3;
-				for (float y = -3; y <= 3; y += 0.5f) {
+				int x = -2;
+				for (float y = -2; y <= 2; y += 0.5f) {
 					float[] temp = {x,y};
 					coordinates.Add (temp);
 				}
