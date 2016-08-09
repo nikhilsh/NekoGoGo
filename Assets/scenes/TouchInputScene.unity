@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SquareSprite: {fileID: 21300000, guid: e58bc3a6a283c4372a948e63bd48ccec, type: 3}
   CircleSprite: {fileID: 21300000, guid: a3d2895bc609048189e09480466e0be0, type: 3}
-  StarSprite: {fileID: 21300000, guid: 4cbf06d2092444d63ab555028bdeb340, type: 3}
+  StarSprite: {fileID: 21300000, guid: c337bf8f4676d4c43957a5a3428ff9b4, type: 3}
   urstoff: {fileID: 124468, guid: 744c72022d11c4841ba07e2bea698ee7, type: 2}
 --- !u!4 &147376870
 Transform:
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SquareSprite: {fileID: 21300000, guid: e58bc3a6a283c4372a948e63bd48ccec, type: 3}
   CircleSprite: {fileID: 21300000, guid: a3d2895bc609048189e09480466e0be0, type: 3}
-  StarSprite: {fileID: 21300000, guid: 4cbf06d2092444d63ab555028bdeb340, type: 3}
+  StarSprite: {fileID: 21300000, guid: c337bf8f4676d4c43957a5a3428ff9b4, type: 3}
   urstoff: {fileID: 124468, guid: 744c72022d11c4841ba07e2bea698ee7, type: 2}
 --- !u!4 &1785587485
 Transform:
