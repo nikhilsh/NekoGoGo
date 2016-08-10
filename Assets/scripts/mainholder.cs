@@ -70,7 +70,7 @@ public class mainholder : MonoBehaviour {
 			rightholder.destroyAllChild ();
 
 			int randomnumber = Random.Range (0,shapes.Length);
-			leftShape = shapes [3];
+			leftShape = shapes [randomnumber];
 			randomnumber = Random.Range (0,shapes.Length);
 			rightShape = shapes [randomnumber];
 
