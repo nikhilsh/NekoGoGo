@@ -37,6 +37,11 @@ public class bgLooper : MonoBehaviour {
 			initialized = true;
 		}
 
+		if (transform.position.x <= endPoint) {
+			Debug.Log("SPAWN CLOUD");
+			newBG ();
+
+		}
 		
 		if (initialized) {
 			
@@ -59,11 +64,7 @@ public class bgLooper : MonoBehaviour {
 		}
 
 
-		if (transform.position.x <= endPoint) {
-			Debug.Log("SPAWN CLOUD");
-			newBG ();
-		
-		}
+
 
 
 

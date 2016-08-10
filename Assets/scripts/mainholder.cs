@@ -70,6 +70,8 @@ public class mainholder : MonoBehaviour {
 			if (score < 0.1f) {
 				leftholder.changeShape (0);
 				rightholder.changeShape (0);
+				_catController.addscore (score);
+
 			} else {
 				_catController.addscore (score);
 				_dogController.addScore (score);

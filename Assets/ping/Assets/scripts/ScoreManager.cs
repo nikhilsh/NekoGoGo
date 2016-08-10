@@ -36,7 +36,8 @@ public class ScoreManager : MonoBehaviour {
 	private bool newScore = false;
 
 	// Use this for initialization
-	void Start () {
+
+	void Awake (){
 		_endGamePanel.SetActive (false);
 		_finalScore.SetActive (false);
 		_bestScore.SetActive (false);
@@ -46,6 +47,8 @@ public class ScoreManager : MonoBehaviour {
 		_homeButton.SetActive (false);
 		_restartButton.SetActive (false);
 		_newScore.SetActive (false);
+	}
+	void Start () {
 		theDog = GameObject.FindWithTag ("DogController");
 		_dogController = theDog.GetComponent<DogController>();
 		initialized = false;
@@ -74,7 +77,7 @@ public class ScoreManager : MonoBehaviour {
 
 		if (initialized) {
 			if (boosted) {
-				pointsPerSecond = 1.5f;
+				pointsPerSecond = 2.5f;
 			}
 			scoreCount += pointsPerSecond * Time.deltaTime;
 		}
@@ -83,7 +86,7 @@ public class ScoreManager : MonoBehaviour {
 			newScore = true;
 		}
 		_dogController.currentScore = (int)Mathf.Round (scoreCount);
-		scoreText.text = "Score: " + (int)Mathf.Round(scoreCount);
+		scoreText.text = "Distance: " + (int)Mathf.Round(scoreCount);
 	}
 
 	public void addScore(int points){
@@ -122,7 +125,7 @@ public class ScoreManager : MonoBehaviour {
 			_bronze.SetActive (true);
 		} else if (scoreCount >= 200.0f && scoreCount < 300.0f) {
 			_silver.SetActive (true);
-		} else if (scoreCount >= 400.0f) {
+		} else if (scoreCount >= 300.0f) {
 			_gold.SetActive (true);
 		}
 
@@ -144,18 +147,14 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void restartGame(){
-		AudioSource.PlayClipAtPoint (clickSound, transform.position);
 		MoPub.destroyBanner ();
 		PointScript.active = true;
 		Application.LoadLevel (Application.loadedLevel);
 
 	}
 	public void homeMenu(){
-		AudioSource.PlayClipAtPoint (clickSound, transform.position);
 		MoPub.destroyBanner ();
 		PointScript.active = true;
 		Application.LoadLevel("GameStartMenu");
-
 	}
-
 }

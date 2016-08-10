@@ -64,12 +64,25 @@ public class CatController : MonoBehaviour {
 
 	public int _currentAnimationState = STATE_REST;
 
+	private static float accelerometerUpdateInterval = 1.0F / 60.0F;
+	// The greater the value of LowPassKernelWidthInSeconds, the slower the filtered value will converge towards current input sample (and vice versa).
+	private static float lowPassKernelWidthInSeconds = 1.0F;
+	// This next parameter is initialized to 2.0 per Apple's recommendation, or at least according to Brady! ;)
+	private static float shakeDetectionThreshold = 2.0F;
+
+	private static float lowPassFilterFactor = accelerometerUpdateInterval / lowPassKernelWidthInSeconds;
+	private static Vector3 lowPassValue = Vector3.zero;
+	private static Vector3 acceleration;
+	private static Vector3 deltaAcceleration;
+
 
 	// Use this for initialization
 	void Start () {
 		myCollider = GetComponent<Collider2D> ();
 		animator = this.GetComponent<Animator> ();
 
+		shakeDetectionThreshold *= shakeDetectionThreshold;
+		lowPassValue = Input.acceleration;
 		//audio = GetComponent<AudioSource> ();
 	
 	}
@@ -147,6 +160,17 @@ public class CatController : MonoBehaviour {
 			animator.SetBool ("initialized", true);
 			changeState (STATE_WALK);
 
+		}
+
+		acceleration = Input.acceleration;
+		lowPassValue = Vector3.Lerp(lowPassValue, acceleration, lowPassFilterFactor);
+		deltaAcceleration = acceleration - lowPassValue;
+		if (deltaAcceleration.sqrMagnitude >= shakeDetectionThreshold && grounded && _currentAnimationState != 0) {
+			// Perform your "shaking actions" here, with suitable guards in the if check above, if necessary to not, to not fire again if they're already being performed.
+			tempAnim = _currentAnimationState;
+
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, jumpHeight);
+			changeState (STATE_JUMP);
 		}
 
 		/*if (audio.isPlaying && !dogIsClose) {

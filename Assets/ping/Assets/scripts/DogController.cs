@@ -66,6 +66,7 @@ public class DogController : MonoBehaviour {
 		for (int i = 0; i < theClouds.Length; i++) {
 			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
 		}
+
 		scoremanager = GameObject.FindWithTag ("ScoreManager");
 		_scoremanager = scoremanager.GetComponent<ScoreManager>();
 
@@ -87,7 +88,7 @@ public class DogController : MonoBehaviour {
 		/////////
 		/// 
 
-		moveSpeed = dogBaseSpeed + (Mathf.Pow((float)currentScore,1.5f) /100.0f);
+		moveSpeed = dogBaseSpeed + (Mathf.Pow((float)currentScore,1.1f) /300.0f);
 
 
 		//SETACTIVE CONTROLS
@@ -192,13 +193,16 @@ public class DogController : MonoBehaviour {
 		
 	}
 
-
-
 	public void endGame(){
 		Instantiate (explosion, cat.position, cat.rotation);
 		gameOver = true;
 		catSprite.SetActive (false);
 		dogSprite.SetActive (false);
+		foreach (bgLooper looper in _bgLooperController) {
+			looper.initialized = false;
+			looper.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f,0.0f);
+
+		}
 		Debug.Log("STOP");
 
 	}
