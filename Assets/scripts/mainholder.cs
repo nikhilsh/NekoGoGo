@@ -14,6 +14,8 @@ public class mainholder : MonoBehaviour {
 	DogController _dogController;
 	GameObject[] theClouds;
 	List<bgLooper> _bgLooperController = new List<bgLooper>();
+	GameObject scoreManager;
+	CatController _scoreManagerController;
 
 	void Start(){
 		tempLoggedTime = Time.deltaTime;
@@ -21,6 +23,8 @@ public class mainholder : MonoBehaviour {
 		_catController = theCat.GetComponent<CatController>();
 		theDog = GameObject.FindWithTag ("DogController");
 		_dogController = theDog.GetComponent<DogController>();
+		scoreManager = GameObject.FindWithTag ("ScoreManager");
+		_scoreManagerController = scoreManager.GetComponent<ScoreManager>();
 		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
 		for (int i = 0; i < theClouds.Length; i++) {
 			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
@@ -43,8 +47,13 @@ public class mainholder : MonoBehaviour {
 			if (score == 0) {
 				return;
 			}
+			else if (score >= 15){
+				int currentStarfishCount = PlayerPrefs.GetInt ("StarfishCount");
+				PlayerPrefs.SetInt("StarfishCount", currentStarfishCount+1);
+			}
 			_catController.addscore(score);
 			_dogController.addScore(score);
+			_scoreManagerController.addscore (score);
 			foreach (bgLooper looper in _bgLooperController) {
 				looper.addScore (score);
 			}
