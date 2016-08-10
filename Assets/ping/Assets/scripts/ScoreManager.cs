@@ -16,6 +16,8 @@ public class ScoreManager : MonoBehaviour {
 
 	public float pointsHolder;
 
+	public AudioClip clickSound;
+
 	public GameObject _endGamePanel;
 	public GameObject _gold;
 	public GameObject _silver;
@@ -74,7 +76,7 @@ public class ScoreManager : MonoBehaviour {
 			newScore = true;
 			
 		}
-		scoreText.text = "" + (int)Mathf.Round(scoreCount);
+		scoreText.text = "Distance: " + (int)Mathf.Round(scoreCount);
 	}
 
 	public void addScore(int points){
@@ -134,10 +136,14 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void restartGame(){
+		AudioSource.PlayClipAtPoint (clickSound, transform.position);
 		Application.LoadLevel (Application.loadedLevel);
+
 	}
 	public void homeMenu(){
+		AudioSource.PlayClipAtPoint (clickSound, transform.position);
 		Application.LoadLevel("GameStartMenu");
+
 	}
 
 }

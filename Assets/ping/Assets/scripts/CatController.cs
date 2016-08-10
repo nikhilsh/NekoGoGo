@@ -130,9 +130,10 @@ public class CatController : MonoBehaviour {
 		
 		if (initialized || Input.GetKeyDown (KeyCode.A)) {
 			//AudioSource.PlayClipAtPoint(startMeow, transform.position); 
-			Instantiate(_nekoGOGO,scoreComment.position, scoreComment.rotation);
+
 			_instructions.SetActive (false);
 			if (meowDone == false){
+				Instantiate(_nekoGOGO,scoreComment.position, scoreComment.rotation);
 				AudioSource.PlayClipAtPoint(startMeow, transform.position); 
 				AudioSource.PlayClipAtPoint (clipStartIntro, transform.position);
 				//audio.PlayOneShot (clipStartIntro, 1.0f);

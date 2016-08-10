@@ -588,6 +588,7 @@ MonoBehaviour:
   pointsPerSecond: 1
   initialized: 0
   pointsHolder: 0
+  clickSound: {fileID: 8300000, guid: b14c82ce1eb8a5043a859657f9a71878, type: 3}
   _endGamePanel: {fileID: 79110248}
   _gold: {fileID: 1573629205}
   _silver: {fileID: 1431602851}
@@ -2435,7 +2436,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 757, y: -33}
+  m_AnchoredPosition: {x: 641.8, y: -26.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916795236
@@ -2450,7 +2451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.55517244, g: 0.3338959, b: 0.15920389, a: 1}
+  m_Color: {r: 0.92758626, g: 0.55787575, b: 0.26599902, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2459,18 +2460,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
-    m_FontStyle: 1
-    m_BestFit: 0
+    m_FontSize: 33
+    m_FontStyle: 3
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Score
+  m_Text: 'Distance: 100'
 --- !u!222 &1916795237
 CanvasRenderer:
   m_ObjectHideFlags: 0
