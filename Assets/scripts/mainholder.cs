@@ -31,13 +31,19 @@ public class mainholder : MonoBehaviour {
 		if (leftholder.check () && rightholder.check ()) {
 			// call ng ping's script!! HERE ADD THE FUCKING POINTS 
 			// totalScore += calculateScore(Time.deltaTime-temploggedTime);
-			_catController.initialized = true;
-			_dogController.initialized = true;
-			foreach (bgLooper looper in _bgLooperController) {
-				looper.initialized = true;
+			if (!_catController.initialized) {
+				_catController.initialized = true;
+				_dogController.initialized = true;
+				foreach (bgLooper looper in _bgLooperController) {
+					looper.initialized = true;
+				}
 			}
-			_catController.addscore( (int) calculateScore(Time.deltaTime-tempLoggedTime));
-
+			int score = (int)calculateScore (Time.deltaTime - tempLoggedTime);
+			_catController.addscore(score);
+			_dogController.addScore(score);
+			foreach (bgLooper looper in _bgLooperController) {
+				looper.addScore (score);
+			}
 			// reset tempLoggedTime;
 			tempLoggedTime = Time.deltaTime;
 
