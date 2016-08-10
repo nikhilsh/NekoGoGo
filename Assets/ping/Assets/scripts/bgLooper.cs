@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class bgLooper : MonoBehaviour {
 
 	//public Transform spawner;
@@ -13,7 +14,7 @@ public class bgLooper : MonoBehaviour {
 	public float speedMultiplier = 1.5f;
 	public float speed;
 
-	public bool faster = false;
+	public bool faster = true;
 	public float movementMultiplier;
 	private float moveDistance;
 
@@ -48,8 +49,12 @@ public class bgLooper : MonoBehaviour {
 			} else {
 			
 				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-speed, GetComponent<Rigidbody2D> ().velocity.y);
+				faster = false;
 			}
 
+		} else {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f,0.0f);
+		
 		}
 
 
