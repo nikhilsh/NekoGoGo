@@ -257,16 +257,4 @@ public class mainholder : MonoBehaviour {
 		}
 		return coordinates;
 	}
-
-	public static void endIntroduction() {
-		GameObject.FindWithTag ("ScoreManager").GetComponent<Canvas> ().enabled = true;
-	}
-
-	public void pauseToggle(){
-		if (Time.timeScale != 0.0f) { 
-			Time.timeScale = 0.0f;
-		} else {
-			Time.timeScale = 1.0f;
-		}
-	}
 }
