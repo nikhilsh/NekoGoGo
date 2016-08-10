@@ -42,11 +42,13 @@ public class mainholder : MonoBehaviour {
 			if (!_catController.initialized) {
 				_catController.initialized = true;
 				_dogController.initialized = true;
+				firstRun ();
 				foreach (bgLooper looper in _bgLooperController) {
 					looper.initialized = true;
 				}
+				return;
 			}
-			int score = (int)calculateScore (Time.deltaTime - tempLoggedTime);
+			int score = (int)calculateScore (Time.time - tempLoggedTime);
 			if (score == 0) {
 				return;
 			}
@@ -61,7 +63,7 @@ public class mainholder : MonoBehaviour {
 				looper.addScore (score);
 			}
 			// reset tempLoggedTime;
-			tempLoggedTime = Time.deltaTime;
+			tempLoggedTime = Time.time;
 
 			leftholder.destroyAllChild ();
 			rightholder.destroyAllChild ();
@@ -81,11 +83,29 @@ public class mainholder : MonoBehaviour {
 	public static float calculateScore(float timeElapsed){
 		if (timeElapsed > 6.0f) {
 			return 0;
-		} else if ( timeElapsed == 0.0f){
+		} else if ( timeElapsed < 0.5f){
 			return 20;
 		} else {
 			return (20 - timeElapsed*scoreMultipler);
 		}
+	}
+
+	private void firstRun(){
+		tempLoggedTime = Time.time;
+
+		leftholder.destroyAllChild ();
+		rightholder.destroyAllChild ();
+
+		int randomnumber = Random.Range (0,shapes.Length);
+		leftShape = shapes [3];
+		randomnumber = Random.Range (0,shapes.Length);
+		rightShape = shapes [randomnumber];
+
+		randomnumber = Random.Range (0, 361);
+		leftholder.changeShape (randomnumber);
+		randomnumber = Random.Range (0, 361);
+		rightholder.changeShape (randomnumber);
+		tempLoggedTime = Time.time;
 	}
 
 	public static void setLeftShape(string shape){
