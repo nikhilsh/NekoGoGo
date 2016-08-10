@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// mainholder
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,6 +35,7 @@ public class mainholder : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
 		if (leftholder.check () && rightholder.check ()) {
 			// call ng ping's script!! HERE ADD THE FUCKING POINTS 
 			// totalScore += calculateScore(Time.deltaTime-temploggedTime);
@@ -64,7 +67,7 @@ public class mainholder : MonoBehaviour {
 			rightholder.destroyAllChild ();
 
 			int randomnumber = Random.Range (0,shapes.Length);
-			leftShape = shapes [randomnumber];
+			leftShape = shapes [3];
 			randomnumber = Random.Range (0,shapes.Length);
 			rightShape = shapes [randomnumber];
 
@@ -177,16 +180,20 @@ public class mainholder : MonoBehaviour {
 	}
 
 	public static List<float[]> getTriangleCoordinates(){
-		float[] triOffset = { 0.0f, 0.0f };
 		List<float[]> coordinates = new List<float[]> ();
 		List<float[]> endpoints = new List<float[]> ();
-		float[] temp1 = { 0, (6.0f * Mathf.Cos (Mathf.PI/6.0f))/2 };
+
+		//		float radiusOfTri = 3.0f * Mathf.Cos (Mathf.PI / 6.0f);
+		float radiusOfTri = 3.5f;
+		float[] center = { 0.0f, 0.0f };
+
+		float[] temp1 = { center[0], center[1] + radiusOfTri };
 		endpoints.Add(temp1);
-		float[] temp2 = { -3.0f, -(6.0f * Mathf.Cos (Mathf.PI/6.0f) )/2};
+		float[] temp2 = { -(radiusOfTri*Mathf.Cos(Mathf.PI*(3.0f/18.0f))), -(radiusOfTri * Mathf.Sin (Mathf.PI*(30.0f/180.0f))) };
 		endpoints.Add(temp2);
-		float[] temp3 = { 3.0f, -(6.0f * Mathf.Cos (Mathf.PI/6.0f) )/2};
+		float[] temp3 = { (radiusOfTri*Mathf.Cos(Mathf.PI*(3.0f/18.0f))), -(radiusOfTri * Mathf.Sin (Mathf.PI*(30.0f/180.0f)))};
 		endpoints.Add(temp3);
-		float[] temp4 = { 0, (6.0f * Mathf.Cos (Mathf.PI/6.0f))/2};
+		float[] temp4 = { center[0], center[1] + radiusOfTri };
 		endpoints.Add(temp4);
 
 		for (int i=1 ; i<endpoints.Count ; i++){
@@ -197,7 +204,7 @@ public class mainholder : MonoBehaviour {
 
 			// generate points between these 2 endpoints
 			for (int step=0 ; step<30 ; step++){
-				float[] temp = { point1[0]+(step*step_x) + triOffset[0], point1[1]+(step*step_y) + triOffset[1] };
+				float[] temp = { point1[0]+(step*step_x), point1[1]+(step*step_y)};
 				coordinates.Add (temp);
 			}
 		}
@@ -228,5 +235,13 @@ public class mainholder : MonoBehaviour {
 			}
 		}
 		return coordinates;
+	}
+
+	public void pauseToggle(){
+		if (Time.timeScale != 0.0f) { 
+			Time.timeScale = 0.0f;
+		} else {
+			Time.timeScale = 1.0f;
+		}
 	}
 }

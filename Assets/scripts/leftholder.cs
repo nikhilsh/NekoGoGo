@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Leftholder
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,6 +22,8 @@ public class leftholder : MonoBehaviour {
 	static List<GameObject> listofurstoff = new List<GameObject>();
 
 	private static GameObject go;
+	private static GameObject goUrstoff;
+	private Vector3 goUrstoff_Offset = new Vector3 (0.5f, 0.5f, 0.0f);
 	public static bool change = false;
 	float angle = 90.0F;
 	float speed = (2 * Mathf.PI) / 5;
@@ -30,14 +34,28 @@ public class leftholder : MonoBehaviour {
 		shape = mainholder.getLeftShape ();
 		initialise (shape);
 
+		//		GameObject hand = Instantiate(urstoff, new Vector3 (0,0, 0), transform.rotation) as GameObject;
+		//		// temp.velocity = transform.TransformDirection( Vector3 (0, 1,     speed));
+		//		temp.transform.parent = transform;
+		//		temp.transform.localPosition = new Vector3 (coordinates[i][0], coordinates[i][1], 0);
+		//		temp.name = ""+i;
+
 		go = new GameObject("LeftHandSprite");
 		SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
 		renderer.sprite = LeftHandSprite;
+		go.transform.parent = transform; // make lefthandsprite a child of leftholder
 		go.transform.localScale = new Vector3 (-0.15F, 0.15F, 1.0F);
 		go.transform.position = new Vector3 (spriteRenderer.bounds.center.x, spriteRenderer.bounds.center.y-3.9F, 0);
 		go.transform.Rotate (Vector3.forward * -30); 
-		
+
+		goUrstoff = Instantiate(urstoff, new Vector3 (0,0, 0), transform.rotation) as GameObject;
+		goUrstoff.transform.parent = transform;
+		((Behaviour)goUrstoff.GetComponent ("Halo")).enabled = true;
+		goUrstoff.transform.position = go.transform.position + goUrstoff_Offset;
+
+
 	}
+
 	void Update(){
 		if (change) {
 			shape = mainholder.getLeftShape ();
@@ -46,14 +64,17 @@ public class leftholder : MonoBehaviour {
 		}
 		if (go) {
 			angle += 0.025F;
-			go.transform.position = new Vector3 (Mathf.Cos (angle * speed) * radius - 3.75F, Mathf.Sin (angle * speed) * radius - 1.75F, 0);		}
+			go.transform.position = new Vector3 (Mathf.Cos (angle * speed) * radius - 4F, Mathf.Sin (angle * speed) * radius - 1.5F, 0);		
+			goUrstoff.transform.position = go.transform.position + goUrstoff_Offset;
+		}
 	}
 
 	public static void endIntroduction() {
 		Destroy (go);
+		Destroy (goUrstoff);
 	}
 
-	public static void changeShape(float angle){
+	public static void changeShape(int angle){
 		change = true;
 		rotateAngle = angle;
 	}
@@ -88,16 +109,17 @@ public class leftholder : MonoBehaviour {
 		}
 
 		for (int i = 0; i < coordinates.Count; i++) {
-//			GameObject temp = Instantiate (urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), Quaternion.identity) as GameObject;
-//			temp.transform.parent = gameObject.transform;
-//			temp.transform.position += temp.transform.parent.position;
-//			temp.name = ""+i;
-//			listofurstoff.Add (temp);
+			//			GameObject temp = Instantiate (urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), Quaternion.identity) as GameObject;
+			//			temp.transform.parent = gameObject.transform;
+			//			temp.transform.position += temp.transform.parent.position;
+			//			temp.name = ""+i;
+			//			listofurstoff.Add (temp);
 
-			GameObject temp = Instantiate(urstoff, new Vector3 (coordinates[i][0], coordinates[i][1], 0), transform.rotation) as GameObject;
+			GameObject temp = Instantiate(urstoff, new Vector3 (0,0, 0), transform.rotation) as GameObject;
 			// temp.velocity = transform.TransformDirection( Vector3 (0, 1,     speed));
 			temp.transform.parent = transform;
 			temp.transform.localPosition = new Vector3 (coordinates[i][0], coordinates[i][1], 0);
+
 			temp.name = ""+i;
 			listofurstoff.Add (temp);
 
@@ -138,74 +160,74 @@ public class leftholder : MonoBehaviour {
 		gameObject.transform.Rotate (Vector3.forward * rotateAngle);
 	}
 
-//	void square(){
-//		spriteRenderer.sprite = mainholder.getSquareSprite ();
-//		spriteRenderer.sprite = SquareSprite;
-//		count = 0;
-//		hitIndex = 0;
-//
-//		for (int sides=0 ; sides<4 ; sides++) {
-//			if (sides == 0) {
-//				// top
-//				int y = 3;
-//				for (float x = -3; x <= 3; x += 0.5f) {
-//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
-//					temp.transform.parent = gameObject.transform;
-//					temp.transform.position += temp.transform.parent.position;
-//					temp.name = ""+count;
-//					count++;
-//					listofleftpoints.Add (temp);
-//				}
-//			} else if (sides == 1) {
-//				// right
-//				int x = 3;
-//				for (float y = 3; y >= -3; y -= 0.5f) {
-//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
-//					temp.transform.parent = gameObject.transform;
-//					temp.transform.position += temp.transform.parent.position;
-//					temp.name =  ""+count;
-//					count++;
-//					listofleftpoints.Add (temp);
-//				}
-//			} else if (sides == 2) {
-//				// bottom
-//				int y = -3;
-//				for (float x = 3; x >= -3; x -= 0.5f) {
-//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
-//					temp.transform.parent = gameObject.transform;
-//					temp.transform.position += temp.transform.parent.position;
-//					temp.name =  ""+count;
-//					count++;
-//					listofleftpoints.Add (temp);
-//				}
-//			} else {
-//				// left
-//				int x = -3;
-//				for (float y = -3; y <= 3; y += 0.5f) {
-//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
-//					temp.transform.parent = gameObject.transform;
-//					temp.transform.position += temp.transform.parent.position;
-//					temp.name = ""+count;
-//					count++;
-//					listofleftpoints.Add (temp);
-//				}
-//			}
-//		}
-//	}
-//
-//	void circle(){
-//		spriteRenderer.sprite = CircleSprite;
-//		count = 0;
-//		hitIndex = 0;
-//		float radius = 3.0f;
-//		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.15f){
-//			GameObject temp = Instantiate (urstoff, new Vector3 (Mathf.Cos(angle+90.0f)*radius, Mathf.Sin(angle+90.0f)*radius, 0), Quaternion.identity) as GameObject;
-//			temp.transform.parent = gameObject.transform;
-//			temp.transform.position += temp.transform.parent.position;
-//			temp.name = ""+count;
-//			count++;
-//			listofleftpoints.Add (temp);
-//		}
-//	}
+	//	void square(){
+	//		spriteRenderer.sprite = mainholder.getSquareSprite ();
+	//		spriteRenderer.sprite = SquareSprite;
+	//		count = 0;
+	//		hitIndex = 0;
+	//
+	//		for (int sides=0 ; sides<4 ; sides++) {
+	//			if (sides == 0) {
+	//				// top
+	//				int y = 3;
+	//				for (float x = -3; x <= 3; x += 0.5f) {
+	//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
+	//					temp.transform.parent = gameObject.transform;
+	//					temp.transform.position += temp.transform.parent.position;
+	//					temp.name = ""+count;
+	//					count++;
+	//					listofleftpoints.Add (temp);
+	//				}
+	//			} else if (sides == 1) {
+	//				// right
+	//				int x = 3;
+	//				for (float y = 3; y >= -3; y -= 0.5f) {
+	//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
+	//					temp.transform.parent = gameObject.transform;
+	//					temp.transform.position += temp.transform.parent.position;
+	//					temp.name =  ""+count;
+	//					count++;
+	//					listofleftpoints.Add (temp);
+	//				}
+	//			} else if (sides == 2) {
+	//				// bottom
+	//				int y = -3;
+	//				for (float x = 3; x >= -3; x -= 0.5f) {
+	//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
+	//					temp.transform.parent = gameObject.transform;
+	//					temp.transform.position += temp.transform.parent.position;
+	//					temp.name =  ""+count;
+	//					count++;
+	//					listofleftpoints.Add (temp);
+	//				}
+	//			} else {
+	//				// left
+	//				int x = -3;
+	//				for (float y = -3; y <= 3; y += 0.5f) {
+	//					GameObject temp = Instantiate (urstoff, new Vector3 (x, y, 0), Quaternion.identity) as GameObject;
+	//					temp.transform.parent = gameObject.transform;
+	//					temp.transform.position += temp.transform.parent.position;
+	//					temp.name = ""+count;
+	//					count++;
+	//					listofleftpoints.Add (temp);
+	//				}
+	//			}
+	//		}
+	//	}
+	//
+	//	void circle(){
+	//		spriteRenderer.sprite = CircleSprite;
+	//		count = 0;
+	//		hitIndex = 0;
+	//		float radius = 3.0f;
+	//		for (float angle = Mathf.PI*2; angle>0.0f ; angle-=0.15f){
+	//			GameObject temp = Instantiate (urstoff, new Vector3 (Mathf.Cos(angle+90.0f)*radius, Mathf.Sin(angle+90.0f)*radius, 0), Quaternion.identity) as GameObject;
+	//			temp.transform.parent = gameObject.transform;
+	//			temp.transform.position += temp.transform.parent.position;
+	//			temp.name = ""+count;
+	//			count++;
+	//			listofleftpoints.Add (temp);
+	//		}
+	//	}
 
 }
