@@ -158,16 +158,16 @@ public class mainholder : MonoBehaviour {
 	}
 
 	public static List<float[]> getTriangleCoordinates(){
-		float[] triOffset = { 0.0f, 0.7f };
+		float[] triOffset = { 0.0f, 0.0f };
 		List<float[]> coordinates = new List<float[]> ();
 		List<float[]> endpoints = new List<float[]> ();
-		float[] temp1 = { 0, 3.0f * Mathf.Cos (Mathf.PI/3.0f) };
+		float[] temp1 = { 0, (6.0f * Mathf.Cos (Mathf.PI/6.0f))/2 };
 		endpoints.Add(temp1);
-		float[] temp2 = {-3.0f, -3.0f};
+		float[] temp2 = { -3.0f, -(6.0f * Mathf.Cos (Mathf.PI/6.0f) )/2};
 		endpoints.Add(temp2);
-		float[] temp3 = {3.0f,-3.0f};
+		float[] temp3 = { 3.0f, -(6.0f * Mathf.Cos (Mathf.PI/6.0f) )/2};
 		endpoints.Add(temp3);
-		float[] temp4 = {0,3.0f * Mathf.Cos (Mathf.PI/3.0f)};
+		float[] temp4 = { 0, (6.0f * Mathf.Cos (Mathf.PI/6.0f))/2};
 		endpoints.Add(temp4);
 
 		for (int i=1 ; i<endpoints.Count ; i++){

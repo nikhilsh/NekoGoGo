@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DogController : MonoBehaviour {
 
@@ -28,10 +29,17 @@ public class DogController : MonoBehaviour {
 	public bool gameOver = false;
 
 	public AudioClip barking;
+	public AudioClip growling;
 	public AudioClip endGameSound;
 	//AudioSource audio;
 	public float soundTime;
 	private float soundTimeCounter;
+
+	public float growlTime;
+	private float growlTimeCounter;
+
+	GameObject[] theClouds;
+	List<bgLooper> _bgLooperController = new List<bgLooper>();
 
 
 	Animator animator;
@@ -44,21 +52,16 @@ public class DogController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = this.GetComponent<Animator> ();
-		//camera = GetComponent<Camera>();
 
-		//audio = GetComponent<AudioSource> ();
+		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
+		for (int i = 0; i < theClouds.Length; i++) {
+			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
+		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-
-		if (dog.position.x > 9.9 && dog.position.x < -10.85) {
-			dogBark.SetActive (true);
-		} else {
-			dogBark.SetActive (false);
-		
-		}
-
+		//INPUT CONTROLS
 
 		if (Input.GetKeyDown (KeyCode.F)){
 			addScore (50);
@@ -66,9 +69,28 @@ public class DogController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.A)) {
 			initialized = true;
 		}
+		/////////
+		//SETACTIVE CONTROLS
 
+		if (gameObject.transform.position.x < -9.65 && gameObject.transform.position.x >= -11.15) {
+			dogBark.SetActive (true);
+			growlTimeCounter -= Time.deltaTime;
+			if (growlTimeCounter <= 0) {
+				AudioSource.PlayClipAtPoint (growling, transform.position);
+				growlTimeCounter = growlTime;
+			}
+		} else {
+			dogBark.SetActive (false);
+		}
 
+		if (tooClose) {
+			sweatAnim.SetActive (true);
 
+		} else {
+			sweatAnim.SetActive (false);
+		}
+		////////////////
+		//PROXIMITY CONTROL
 		if (cat.position.x - dog.position.x > tooCloseDistance) {
 			changeState (STATE_NOBARK);
 			tooClose = false;
@@ -85,21 +107,16 @@ public class DogController : MonoBehaviour {
 				soundTimeCounter = soundTime;
 			}
 
-			Debug.Log("barking!");
+
 		} else if (cat.position.x - dog.position.x <= 0 && gameOver== false){
 			endGame();
-			//audio.PlayOneShot (endGameSound, 2.0f);
 			AudioSource.PlayClipAtPoint(endGameSound, transform.position); 
+			foreach (bgLooper looper in _bgLooperController) {
+				looper.initialized = false;
+			}
 		}
 
-		if (tooClose) {
-			sweatAnim.SetActive (true);
 
-		
-		} else {
-			sweatAnim.SetActive (false);
-		}
-			
 
 	
 		if (initialized) {
@@ -116,6 +133,8 @@ public class DogController : MonoBehaviour {
 				GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveSpeed, GetComponent<Rigidbody2D> ().velocity.y);
 			}
 		}
+
+
 	}
 
 	void changeState(int state){
@@ -146,9 +165,9 @@ public class DogController : MonoBehaviour {
 
 	public void endGame(){
 		Instantiate (explosion, cat.position, cat.rotation);
+		gameOver = true;
 		catSprite.SetActive (false);
 		dogSprite.SetActive (false);
-		gameOver = true;
 		Debug.Log("STOP");
 
 	}
