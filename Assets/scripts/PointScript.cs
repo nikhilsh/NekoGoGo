@@ -10,6 +10,7 @@ public class PointScript : MonoBehaviour
 			if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) {
 				leftholder.endIntroduction ();
 				rightholder.endIntroduction ();
+				mainholder.endIntroduction ();
 
 				var ray = Camera.main.ScreenPointToRay (touch.position);
 				var ray2 = Camera.main.ScreenPointToRay (touch.position);

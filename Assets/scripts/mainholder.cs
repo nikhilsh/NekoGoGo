@@ -257,6 +257,10 @@ public class mainholder : MonoBehaviour {
 		return coordinates;
 	}
 
+	public static void endIntroduction() {
+		scoreManager.SetActive = true;
+	}
+
 	public void pauseToggle(){
 		if (Time.timeScale != 0.0f) { 
 			Time.timeScale = 0.0f;
