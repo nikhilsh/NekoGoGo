@@ -198,6 +198,13 @@ public class DogController : MonoBehaviour {
 		gameOver = true;
 		catSprite.SetActive (false);
 		dogSprite.SetActive (false);
+
+		_bgLooperController.Clear ();
+		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
+		for (int i = 0; i < theClouds.Length; i++) {
+			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
+		}
+
 		foreach (bgLooper looper in _bgLooperController) {
 			looper.initialized = false;
 		}
