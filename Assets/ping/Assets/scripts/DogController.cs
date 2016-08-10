@@ -155,8 +155,8 @@ public class DogController : MonoBehaviour {
 	}
 
 	public void addScore(int points){
-		moveBack = true;
 		moveDistance = points * moveBackMultiplier;
+		moveBack = true;
 		//movementTimer = movementTime;
 		
 	}

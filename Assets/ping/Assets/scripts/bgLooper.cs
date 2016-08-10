@@ -69,8 +69,8 @@ public class bgLooper : MonoBehaviour {
 	}
 
 	public void addScore(int points){
-		faster = true;
 		moveDistance = points * movementMultiplier;
+		faster = true;
 		//movementTimer = movementTime;
 	}
 

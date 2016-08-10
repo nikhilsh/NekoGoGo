@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour {
 		scoreCount = 0;
 		pointsHolder = 0;
 
-		if (PlayerPrefs.GetInt ("HighestScore") != null) {
+		if (PlayerPrefs.HasKey ("HighestScore")) {
 		
 			hiScoreCount = PlayerPrefs.GetInt ("HighestScore");
 		} else {
@@ -45,7 +45,7 @@ public class ScoreManager : MonoBehaviour {
 		if (initialized) {
 			
 			scoreCount += pointsPerSecond * Time.deltaTime;
-			//Debug.Log (scoreCount);
+
 		
 		}
 		if (scoreCount > hiScoreCount) {
@@ -53,14 +53,35 @@ public class ScoreManager : MonoBehaviour {
 			
 		}
 
-		scoreText.text = "" + Mathf.Round(scoreCount);
+		scoreText.text = "" + (int)Mathf.Round(scoreCount);
 
 	
 	}
 
 	public void addScore(int points){
-		pointsHolder += points;
+		StopCoroutine ("CountTo");
+		StartCoroutine ("CountTo", scoreCount+points);
 
+	}
+
+
+	IEnumerator CountTo (int target) {
+		int start = (int)Mathf.Round(scoreCount);
+		for (float timer = 0; timer < 1.0F; timer += Time.deltaTime) {
+			float progress = timer / 1.0F;
+			scoreCount = (int)Mathf.Lerp (start, target, progress);
+			yield return null;
+		}
+		scoreCount = target;
+	}
+
+	//call to save high score
+	public void endGameScore() {
+		PlayerPrefs.SetInt("HighestScore", (int)Mathf.Round(scoreCount));
+		int currentStarfishCount = PlayerPrefs.GetInt ("StarfishCount");
+		PlayerPrefs.SetInt("StarfishCount", currentStarfishCount+(int)Mathf.Round(scoreCount/100));
+
+		PlayerPrefs.Save ();
 	}
 
 }

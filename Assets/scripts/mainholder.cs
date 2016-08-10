@@ -7,12 +7,15 @@ public class mainholder : MonoBehaviour {
 	public static string rightShape = "circle";
 	public static string[] shapes = { "square", "circle", "star", "triangle", "hexagon"};
 	public static float tempLoggedTime;
+	public static float scoreMultipler = 2.5F;
 	GameObject theCat;
 	CatController _catController;
 	GameObject theDog;
 	DogController _dogController;
 	GameObject[] theClouds;
 	List<bgLooper> _bgLooperController = new List<bgLooper>();
+	GameObject scoreManager;
+	CatController _scoreManagerController;
 
 	void Start(){
 		tempLoggedTime = Time.deltaTime;
@@ -20,6 +23,8 @@ public class mainholder : MonoBehaviour {
 		_catController = theCat.GetComponent<CatController>();
 		theDog = GameObject.FindWithTag ("DogController");
 		_dogController = theDog.GetComponent<DogController>();
+		scoreManager = GameObject.FindWithTag ("ScoreManager");
+		_scoreManagerController = scoreManager.GetComponent<ScoreManager>();
 		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
 		for (int i = 0; i < theClouds.Length; i++) {
 			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
@@ -31,13 +36,27 @@ public class mainholder : MonoBehaviour {
 		if (leftholder.check () && rightholder.check ()) {
 			// call ng ping's script!! HERE ADD THE FUCKING POINTS 
 			// totalScore += calculateScore(Time.deltaTime-temploggedTime);
-			_catController.initialized = true;
-			_dogController.initialized = true;
-			foreach (bgLooper looper in _bgLooperController) {
-				looper.initialized = true;
+			if (!_catController.initialized) {
+				_catController.initialized = true;
+				_dogController.initialized = true;
+				foreach (bgLooper looper in _bgLooperController) {
+					looper.initialized = true;
+				}
 			}
-			_catController.addscore( (int) calculateScore(Time.deltaTime-tempLoggedTime));
-
+			int score = (int)calculateScore (Time.deltaTime - tempLoggedTime);
+			if (score == 0) {
+				return;
+			}
+			else if (score >= 15){
+				int currentStarfishCount = PlayerPrefs.GetInt ("StarfishCount");
+				PlayerPrefs.SetInt("StarfishCount", currentStarfishCount+1);
+			}
+			_catController.addscore(score);
+			_dogController.addScore(score);
+			_scoreManagerController.addscore (score);
+			foreach (bgLooper looper in _bgLooperController) {
+				looper.addScore (score);
+			}
 			// reset tempLoggedTime;
 			tempLoggedTime = Time.deltaTime;
 
@@ -57,12 +76,12 @@ public class mainholder : MonoBehaviour {
 	}
 
 	public static float calculateScore(float timeElapsed){
-		if (timeElapsed > 5.0f) {
-			return 50;
+		if (timeElapsed > 6.0f) {
+			return 0;
 		} else if ( timeElapsed == 0.0f){
-			return 250;
+			return 20;
 		} else {
-			return (250 - timeElapsed*40);
+			return (20 - timeElapsed*scoreMultipler);
 		}
 	}
 

@@ -65,17 +65,14 @@ public class CatController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-
-
-
+		
 		if (Input.GetKeyDown (KeyCode.Space) && grounded && _currentAnimationState != 0) {
 			tempAnim = _currentAnimationState;
 			
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, jumpHeight);
 			changeState (STATE_JUMP);
 
-			}
+		}
 
 
 	
@@ -146,9 +143,8 @@ public class CatController : MonoBehaviour {
 	public void addscore(int points){
 		//audio.PlayOneShot (meowing, 2.0f);
 		AudioSource.PlayClipAtPoint(meowing, transform.position);  
-		_running = true;
 		runTime = points * runTimeMultiplier;
-
+		_running = true;
 	}
 
 
