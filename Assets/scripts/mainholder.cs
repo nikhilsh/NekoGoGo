@@ -9,11 +9,21 @@ public class mainholder : MonoBehaviour {
 	public static float tempLoggedTime;
 	GameObject theCat;
 	CatController _catController;
+	GameObject theDog;
+	DogController _dogController;
+	GameObject[] theClouds;
+	List<bgLooper> _bgLooperController = new List<bgLooper>();
 
 	void Start(){
 		tempLoggedTime = Time.deltaTime;
 		theCat = GameObject.FindWithTag ("CatController");
 		_catController = theCat.GetComponent<CatController>();
+		theDog = GameObject.FindWithTag ("DogController");
+		_dogController = theDog.GetComponent<DogController>();
+		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
+		for (int i = 0; i < theClouds.Length; i++) {
+			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
+		}
 	}
 
 	// Update is called once per frame
@@ -21,6 +31,11 @@ public class mainholder : MonoBehaviour {
 		if (leftholder.check () && rightholder.check ()) {
 			// call ng ping's script!! HERE ADD THE FUCKING POINTS 
 			// totalScore += calculateScore(Time.deltaTime-temploggedTime);
+			_catController.initialized = true;
+			_dogController.initialized = true;
+			foreach (bgLooper looper in _bgLooperController) {
+				looper.initialized = true;
+			}
 			_catController.addscore( (int) calculateScore(Time.deltaTime-tempLoggedTime));
 
 			// reset tempLoggedTime;

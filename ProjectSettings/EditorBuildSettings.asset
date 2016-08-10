@@ -5,11 +5,17 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+<<<<<<< HEAD
   - enabled: 0
     path: Assets/TouchInputScene.unity
+=======
+>>>>>>> origin/master
   - enabled: 1
     path: Assets/scenes/GameStartMenu.unity
   - enabled: 1
     path: Assets/scenes/TouchInputScene.unity
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/scenes/CustomisePage.unity
+=======
+>>>>>>> origin/master
