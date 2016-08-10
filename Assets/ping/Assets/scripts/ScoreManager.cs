@@ -107,6 +107,8 @@ public class ScoreManager : MonoBehaviour {
 		finalScore.text = "" + (int)Mathf.Round(scoreCount);
 		bestScore.text = "" + (int)Mathf.Round(hiScoreCount);
 		PlayerPrefs.Save ();
+
+		PointScript.active = false;
 	}
 
 }
