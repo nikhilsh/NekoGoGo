@@ -26,7 +26,6 @@ public class StartMenu_Animation : MonoBehaviour {
 	public GameObject airplane;
 
 	void Update () {
-		Debug.Log (airplane.transform.position.y);
 		animate_cloud_3 ();
 		animate_cloud_2 ();
 		animate_cloud_1 ();
