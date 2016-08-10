@@ -88,7 +88,7 @@ public class DogController : MonoBehaviour {
 		/////////
 		/// 
 
-		moveSpeed = dogBaseSpeed + (Mathf.Pow((float)currentScore,1.1f) /300.0f);
+		moveSpeed = dogBaseSpeed + (Mathf.Pow((float)currentScore,1.1f) /250.0f);
 
 
 		//SETACTIVE CONTROLS
@@ -150,7 +150,7 @@ public class DogController : MonoBehaviour {
 			if (moveBack && moveDistance > 0) {
 				moveDistance -= Time.deltaTime;
 
-				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-0.6f, GetComponent<Rigidbody2D> ().velocity.y);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-0.8f, GetComponent<Rigidbody2D> ().velocity.y);
 		
 			} else if (moveBack && moveDistance <= 0) {
 		
@@ -185,7 +185,7 @@ public class DogController : MonoBehaviour {
 		if (transform.position.x < -12.0f) {
 			transform.position = new Vector3 (-12.0f, transform.position.y, transform.position.z);
 		} else {
-			moveDistance = Mathf.Abs(3f - points / 200f);
+			moveDistance = Mathf.Abs(2.5f - points / 150f);
 			moveBack = true;
 		}
 
