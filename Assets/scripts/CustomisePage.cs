@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CustomisePage : MonoBehaviour {
 
@@ -11,10 +12,25 @@ public class CustomisePage : MonoBehaviour {
 	public GameObject skin_2;
 	public GameObject skin_3;
 
+	public AudioClip barkBark;
+	AudioSource audio;
+	public Text starFishesText;
+	public int starFishes;
+
+
+
 	// Use this for initialization
 	void Start () {
+		audio = GetComponent<AudioSource> ();
+		if (PlayerPrefs.HasKey ("StarfishCount")) {
+
+			starFishes = PlayerPrefs.GetInt ("StarfishCount");
+		} else {
+			starFishes = 0;
+		}
 		counter = 0;
 		number_of_skins = 4;
+		starFishesText.text = "X" + starFishes;
 	}
 	
 	// Update is called once per frame
@@ -35,6 +51,8 @@ public class CustomisePage : MonoBehaviour {
 	}
 
 	public void purchase() {
+		audio.PlayOneShot (barkBark, 2.0f);
+		//AudioSource.PlayClipAtPoint(barkBark, transform.position); 
 	}
 
 	void updateImage(int counter) {
