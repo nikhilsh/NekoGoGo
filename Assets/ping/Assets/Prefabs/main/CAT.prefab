@@ -213,6 +213,8 @@ MonoBehaviour:
   _great: {fileID: 109070, guid: f48c7db65b670aa47a3ee433b4a007dc, type: 2}
   _cool: {fileID: 170090, guid: 4789a25e2c243064f83bbeaeeabe3aea, type: 2}
   _bad: {fileID: 136034, guid: e9ad2714c73d2254483f9e0342f47553, type: 2}
+  _nekoGOGO: {fileID: 127718, guid: 19966a682d216aa4a8b4484971ee5f47, type: 2}
+  _instructions: {fileID: 0}
   _currentAnimationState: 0
 --- !u!212 &21223116
 SpriteRenderer:

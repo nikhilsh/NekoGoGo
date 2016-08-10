@@ -40,6 +40,8 @@ public class CatController : MonoBehaviour {
 	public GameObject _great;
 	public GameObject _cool;
 	public GameObject _bad;
+	public GameObject _nekoGOGO;
+	public GameObject _instructions;
 
 	private int tempAnim;
 
@@ -118,12 +120,15 @@ public class CatController : MonoBehaviour {
 		
 		if (initialized || Input.GetKeyDown (KeyCode.A)) {
 			//AudioSource.PlayClipAtPoint(startMeow, transform.position); 
+			Instantiate(_nekoGOGO,scoreComment.position, scoreComment.rotation);
+			_instructions.SetActive (false);
 			if (meowDone == false){
 				AudioSource.PlayClipAtPoint(startMeow, transform.position); 
 			}
 			meowDone = true;
 			animator.SetBool ("initialized", true);
 			changeState (STATE_WALK);
+
 		}
 	}
 
