@@ -258,7 +258,7 @@ public class mainholder : MonoBehaviour {
 	}
 
 	public static void endIntroduction() {
-		scoreManager.SetActive = true;
+		(GameObject.FindWithTag ("ScoreManager")).SetActive (true);
 	}
 
 	public void pauseToggle(){
