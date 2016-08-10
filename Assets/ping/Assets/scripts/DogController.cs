@@ -15,7 +15,8 @@ public class DogController : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject dogBark;
 
-	public float moveSpeed = 1.0f;
+	//public float moveSpeed = 1.0f;
+	public float dogBaseSpeed = 1.0f; 
 	public float tooCloseDistance = 5.0f;
 	public bool tooClose = false;
 
@@ -74,7 +75,7 @@ public class DogController : MonoBehaviour {
 		/////////
 		/// 
 
-		moveSpeed = 1.0f + (float)currentScore/100.0f;
+		float moveSpeed = dogBaseSpeed + (float)currentScore/100.0f;
 
 
 		//SETACTIVE CONTROLS

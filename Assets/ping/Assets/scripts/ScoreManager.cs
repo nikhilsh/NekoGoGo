@@ -15,6 +15,14 @@ public class ScoreManager : MonoBehaviour {
 
 	public float pointsHolder;
 
+	public GameObject _endGamePanel;
+	public GameObject _gold;
+	public GameObject _silver;
+	public GameObject _bronze;
+	public Text finalScore;
+	public Text bestScore;
+
+
 	// Use this for initialization
 	void Start () {
 		
@@ -37,14 +45,6 @@ public class ScoreManager : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.F)){
 			addScore (50);
-		}
-		if (Input.GetKeyDown (KeyCode.G)){
-			addScore (12);
-		}
-		if (Input.GetKeyDown (KeyCode.H)){
-			addScore (7);
-		}if (Input.GetKeyDown (KeyCode.J)){
-			addScore (2);
 		}
 		if (Input.GetKeyDown (KeyCode.A)) {
 			initialized = true;
