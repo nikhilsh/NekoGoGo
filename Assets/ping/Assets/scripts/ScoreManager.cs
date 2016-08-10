@@ -147,7 +147,9 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void restartGame(){
+		#if UNITY_IOS
 		MoPub.destroyBanner ();
+		#endif
 		PointScript.active = true;
 		Application.LoadLevel (Application.loadedLevel);
 
