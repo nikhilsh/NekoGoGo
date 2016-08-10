@@ -13,6 +13,8 @@ public class ScoreManager : MonoBehaviour {
 	public float pointsPerSecond;
 
 	public bool initialized;
+	public bool boosted = false;
+
 
 	public float pointsHolder;
 
@@ -29,7 +31,8 @@ public class ScoreManager : MonoBehaviour {
 	public GameObject _newScore;
 	public Text finalScore;
 	public Text bestScore;
-
+	GameObject theDog;
+	DogController _dogController;
 	private bool newScore = false;
 
 	// Use this for initialization
@@ -43,7 +46,8 @@ public class ScoreManager : MonoBehaviour {
 		_homeButton.SetActive (false);
 		_restartButton.SetActive (false);
 		_newScore.SetActive (false);
-		
+		theDog = GameObject.FindWithTag ("DogController");
+		_dogController = theDog.GetComponent<DogController>();
 		initialized = false;
 
 		////////////
@@ -69,14 +73,17 @@ public class ScoreManager : MonoBehaviour {
 		}
 
 		if (initialized) {
+			if (boosted) {
+				pointsPerSecond = 1.5f;
+			}
 			scoreCount += pointsPerSecond * Time.deltaTime;
 		}
 		if (scoreCount > hiScoreCount) {
 			hiScoreCount = scoreCount;
 			newScore = true;
-			
 		}
-		scoreText.text = "Distance: " + (int)Mathf.Round(scoreCount);
+		_dogController.currentScore = (int)Mathf.Round (scoreCount);
+		scoreText.text = "Score: " + (int)Mathf.Round(scoreCount);
 	}
 
 	public void addScore(int points){
@@ -121,7 +128,8 @@ public class ScoreManager : MonoBehaviour {
 
 		#if UNITY_IOS
 		MoPub.createBanner("86f939fa9c1b4baeab244dbbc89bb094", MoPubAdPosition.BottomCenter );
-		#elif UNITY_ANDROID 
+		#endif
+		#if UNITY_ANDROID 
 		MoPub.createBanner("a9c44550748449d69c44cd3069ddf5f1", MoPubAdPosition.BottomCenter );
 		#endif
 
@@ -137,11 +145,15 @@ public class ScoreManager : MonoBehaviour {
 
 	public void restartGame(){
 		AudioSource.PlayClipAtPoint (clickSound, transform.position);
+		MoPub.destroyBanner ();
+		PointScript.active = true;
 		Application.LoadLevel (Application.loadedLevel);
 
 	}
 	public void homeMenu(){
 		AudioSource.PlayClipAtPoint (clickSound, transform.position);
+		MoPub.destroyBanner ();
+		PointScript.active = true;
 		Application.LoadLevel("GameStartMenu");
 
 	}

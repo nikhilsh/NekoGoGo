@@ -21,6 +21,11 @@ public class mainholder : MonoBehaviour {
 	GameObject scoreManager;
 	ScoreManager _scoreManagerController;
 
+	void Awake() {
+		leftShape = "circle";
+		rightShape = "circle";
+	}
+		
 	void Start(){
 		tempLoggedTime = Time.deltaTime;
 		theCat = GameObject.FindWithTag ("CatController");
