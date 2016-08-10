@@ -208,6 +208,11 @@ MonoBehaviour:
   runTimeMultiplier: 50
   meowing: {fileID: 8300000, guid: ef361b62fcee1c84599052e18b455291, type: 3}
   startMeow: {fileID: 8300000, guid: dd1ce79552476cb4d8272cbfc3ef160b, type: 3}
+  scoreComment: {fileID: 0}
+  _excellent: {fileID: 104678, guid: 41c18a18b39bbd84bb782813e1bff787, type: 2}
+  _great: {fileID: 109070, guid: f48c7db65b670aa47a3ee433b4a007dc, type: 2}
+  _cool: {fileID: 170090, guid: 4789a25e2c243064f83bbeaeeabe3aea, type: 2}
+  _bad: {fileID: 136034, guid: e9ad2714c73d2254483f9e0342f47553, type: 2}
   _currentAnimationState: 0
 --- !u!212 &21223116
 SpriteRenderer:

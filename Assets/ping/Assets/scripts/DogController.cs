@@ -15,7 +15,7 @@ public class DogController : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject dogBark;
 
-	public float moveSpeed = 3.0f;
+	public float moveSpeed = 1.0f;
 	public float tooCloseDistance = 5.0f;
 	public bool tooClose = false;
 
@@ -34,6 +34,8 @@ public class DogController : MonoBehaviour {
 	//AudioSource audio;
 	public float soundTime;
 	private float soundTimeCounter;
+
+	public float currentScore; //SENT FROM SCOREMANAGER
 
 	public float growlTime;
 	private float growlTimeCounter;
@@ -70,6 +72,11 @@ public class DogController : MonoBehaviour {
 			initialized = true;
 		}
 		/////////
+		/// 
+
+		moveSpeed = 1.0f + (float)currentScore/100.0f;
+
+
 		//SETACTIVE CONTROLS
 
 		if (gameObject.transform.position.x < -9.65 && gameObject.transform.position.x >= -11.15) {
@@ -171,5 +178,7 @@ public class DogController : MonoBehaviour {
 		Debug.Log("STOP");
 
 	}
+
+
 		
 }

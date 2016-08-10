@@ -33,7 +33,12 @@ public class CatController : MonoBehaviour {
 	public AudioClip startMeow;
 	//AudioSource audio;
 
-
+	//score prompts
+	public Transform scoreComment;
+	public GameObject _excellent;
+	public GameObject _great;
+	public GameObject _cool;
+	public GameObject _bad;
 
 	private int tempAnim;
 
@@ -145,6 +150,19 @@ public class CatController : MonoBehaviour {
 		AudioSource.PlayClipAtPoint(meowing, transform.position);  
 		runTime = points * runTimeMultiplier;
 		_running = true;
+
+		if (points < 5) {
+			Instantiate (_bad, scoreComment.position, scoreComment.rotation);
+		} else if (points >= 5 && points < 10) {
+			Instantiate (_cool, scoreComment.position, scoreComment.rotation);
+		}else if (points >= 10 && points < 15) {
+			Instantiate (_great, scoreComment.position, scoreComment.rotation);
+		}else if (points >= 15) {
+			Instantiate (_excellent, scoreComment.position, scoreComment.rotation);
+		}
+
+
+
 	}
 
 
