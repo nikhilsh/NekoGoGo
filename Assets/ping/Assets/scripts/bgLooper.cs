@@ -32,6 +32,7 @@ public class bgLooper : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.F)){
 			addScore (50);
 		}
+
 		if (Input.GetKeyDown (KeyCode.A)) {
 			initialized = true;
 		}

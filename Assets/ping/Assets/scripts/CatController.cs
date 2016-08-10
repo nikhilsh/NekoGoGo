@@ -14,6 +14,7 @@ public class CatController : MonoBehaviour {
 	private Collider2D myCollider;
 
 	public bool initialized = false;
+	private bool meowDone = false;
 
 
 	public float jumpHeight;
@@ -116,7 +117,11 @@ public class CatController : MonoBehaviour {
 
 		
 		if (initialized || Input.GetKeyDown (KeyCode.A)) {
-			AudioSource.PlayClipAtPoint(startMeow, transform.position);  
+			//AudioSource.PlayClipAtPoint(startMeow, transform.position); 
+			if (meowDone == false){
+				AudioSource.PlayClipAtPoint(startMeow, transform.position); 
+			}
+			meowDone = true;
 			animator.SetBool ("initialized", true);
 			changeState (STATE_WALK);
 		}
@@ -164,6 +169,8 @@ public class CatController : MonoBehaviour {
 
 
 	}
+
+
 
 
 

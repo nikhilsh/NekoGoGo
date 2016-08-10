@@ -38,6 +38,14 @@ public class ScoreManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.F)){
 			addScore (50);
 		}
+		if (Input.GetKeyDown (KeyCode.G)){
+			addScore (12);
+		}
+		if (Input.GetKeyDown (KeyCode.H)){
+			addScore (7);
+		}if (Input.GetKeyDown (KeyCode.J)){
+			addScore (2);
+		}
 		if (Input.GetKeyDown (KeyCode.A)) {
 			initialized = true;
 		}
