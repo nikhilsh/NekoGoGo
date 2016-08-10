@@ -38,32 +38,18 @@ public class ScoreManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.F)){
 			addScore (50);
 		}
-		if (Input.GetKeyDown (KeyCode.G)){
-			addScore (12);
-		}
-		if (Input.GetKeyDown (KeyCode.H)){
-			addScore (7);
-		}if (Input.GetKeyDown (KeyCode.J)){
-			addScore (2);
-		}
 		if (Input.GetKeyDown (KeyCode.A)) {
 			initialized = true;
 		}
 
 		if (initialized) {
-			
 			scoreCount += pointsPerSecond * Time.deltaTime;
-
-		
 		}
 		if (scoreCount > hiScoreCount) {
 			hiScoreCount = scoreCount;
 			
 		}
-
-		scoreText.text = "" + (int)Mathf.Round(scoreCount);
-
-	
+		scoreText.text = "" + (int)Mathf.Ceil(scoreCount);
 	}
 
 	public void addScore(int points){
@@ -74,7 +60,7 @@ public class ScoreManager : MonoBehaviour {
 
 
 	IEnumerator CountTo (int target) {
-		int start = (int)Mathf.Round(scoreCount);
+		int start = (int)Mathf.Round(scoreCount + pointsPerSecond);
 		for (float timer = 0; timer < 1.0F; timer += Time.deltaTime) {
 			float progress = timer / 1.0F;
 			scoreCount = (int)Mathf.Lerp (start, target, progress);
