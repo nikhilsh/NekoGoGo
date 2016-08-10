@@ -66,7 +66,7 @@ public class ScoreManager : MonoBehaviour {
 			hiScoreCount = scoreCount;
 			
 		}
-		scoreText.text = "" + (int)Mathf.Ceil(scoreCount);
+		scoreText.text = "" + (int)Mathf.Round(scoreCount);
 	}
 
 	public void addScore(int points){
@@ -89,6 +89,8 @@ public class ScoreManager : MonoBehaviour {
 	//call to save high score
 	public void endGameScore() {
 		initialized = false;
+
+		Handheld.Vibrate();
 
 		_endGamePanel.SetActive (true);
 		_finalScore.SetActive (true);

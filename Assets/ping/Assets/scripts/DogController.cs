@@ -16,13 +16,13 @@ public class DogController : MonoBehaviour {
 	public GameObject dogBark;
 
 	//public float moveSpeed = 1.0f;
-	public float dogBaseSpeed = 1.0f; 
+	public float dogBaseSpeed = 0.4f; 
 	public float tooCloseDistance = 5.0f;
 	public bool tooClose = false;
 
 	public bool moveBack = false;
 	public float moveDistance; 
-	public float moveBackMultiplier = 0.1f;
+	public float moveBackMultiplier = 3.0f;
 	//public const float movementTime = 0.5;
 	//private float movementTimer = 0.0f;
 
@@ -172,7 +172,10 @@ public class DogController : MonoBehaviour {
 	}
 
 	public void addScore(int points){
-		moveDistance = points * moveBackMultiplier;
+//		moveDistance = points * moveBackMultiplier;
+		if (moveDistance < 40.0f) {
+			moveDistance = Mathf.Abs(5f - points / 500);
+		}
 		moveBack = true;
 		//movementTimer = movementTime;
 		
