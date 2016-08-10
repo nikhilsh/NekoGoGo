@@ -44,6 +44,9 @@ public class DogController : MonoBehaviour {
 	GameObject[] theClouds;
 	List<bgLooper> _bgLooperController = new List<bgLooper>();
 
+	GameObject scoremanager;
+	ScoreManager _scoremanager;
+
 
 	Animator animator;
 
@@ -59,6 +62,11 @@ public class DogController : MonoBehaviour {
 		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
 		for (int i = 0; i < theClouds.Length; i++) {
 			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
+
+		scoremanager = GameObject.FindWithTag ("ScoreManager");
+		_scoremanager = scoremanager.GetComponent<ScoreManager>();
+
+
 		}
 	}
 
@@ -118,6 +126,7 @@ public class DogController : MonoBehaviour {
 
 		} else if (cat.position.x - dog.position.x <= 0 && gameOver== false){
 			endGame();
+			_scoremanager.endGameScore ();
 			AudioSource.PlayClipAtPoint(endGameSound, transform.position); 
 			foreach (bgLooper looper in _bgLooperController) {
 				looper.initialized = false;

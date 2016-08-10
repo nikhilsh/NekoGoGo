@@ -556,7 +556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &313299276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,12 +650,14 @@ MonoBehaviour:
   pointsPerSecond: 1
   initialized: 0
   pointsHolder: 0
-  _endGamePanel: {fileID: 0}
-  _gold: {fileID: 0}
-  _silver: {fileID: 0}
-  _bronze: {fileID: 0}
-  finalScore: {fileID: 0}
-  bestScore: {fileID: 0}
+  _endGamePanel: {fileID: 79110248}
+  _gold: {fileID: 1573629205}
+  _silver: {fileID: 1431602851}
+  _bronze: {fileID: 645782905}
+  _finalScore: {fileID: 1917496120}
+  _bestScore: {fileID: 1587253837}
+  finalScore: {fileID: 1917496122}
+  bestScore: {fileID: 1587253839}
 --- !u!1 &325316128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,7 +1800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1587253838
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2221,7 +2223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1917496121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2342,7 +2344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2100790810
 Transform:
   m_ObjectHideFlags: 0
