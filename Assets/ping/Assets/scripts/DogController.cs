@@ -200,8 +200,6 @@ public class DogController : MonoBehaviour {
 		dogSprite.SetActive (false);
 		foreach (bgLooper looper in _bgLooperController) {
 			looper.initialized = false;
-			looper.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f,0.0f);
-
 		}
 		Debug.Log("STOP");
 
