@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour {
 		scoreCount = 0;
 		pointsHolder = 0;
 
-		if (PlayerPrefs.GetInt ("HighestScore") != null) {
+		if (PlayerPrefs.HasKey ("HighestScore")) {
 		
 			hiScoreCount = PlayerPrefs.GetInt ("HighestScore");
 		} else {
@@ -73,6 +73,15 @@ public class ScoreManager : MonoBehaviour {
 			yield return null;
 		}
 		scoreCount = target;
+	}
+
+	//call to save high score
+	public void endGameScore() {
+		PlayerPrefs.SetInt("HighestScore", (int)Mathf.Round(scoreCount));
+		int currentStarfishCount = PlayerPrefs.GetInt ("StarfishCount");
+		PlayerPrefs.SetInt("StarfishCount", currentStarfishCount+(int)Mathf.Round(scoreCount/100));
+
+		PlayerPrefs.Save ();
 	}
 
 }
