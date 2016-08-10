@@ -15,7 +15,7 @@ public class mainholder : MonoBehaviour {
 	GameObject[] theClouds;
 	List<bgLooper> _bgLooperController = new List<bgLooper>();
 	GameObject scoreManager;
-	CatController _scoreManagerController;
+	ScoreManager _scoreManagerController;
 
 	void Start(){
 		tempLoggedTime = Time.deltaTime;
@@ -53,7 +53,7 @@ public class mainholder : MonoBehaviour {
 			}
 			_catController.addscore(score);
 			_dogController.addScore(score);
-			_scoreManagerController.addscore (score);
+			_scoreManagerController.addScore (score);
 			foreach (bgLooper looper in _bgLooperController) {
 				looper.addScore (score);
 			}
