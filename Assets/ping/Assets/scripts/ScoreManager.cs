@@ -15,6 +15,14 @@ public class ScoreManager : MonoBehaviour {
 
 	public float pointsHolder;
 
+	public GameObject _endGamePanel;
+	public GameObject _gold;
+	public GameObject _silver;
+	public GameObject _bronze;
+	public Text finalScore;
+	public Text bestScore;
+
+
 	// Use this for initialization
 	void Start () {
 		
