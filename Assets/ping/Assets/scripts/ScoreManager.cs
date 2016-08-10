@@ -24,9 +24,11 @@ public class ScoreManager : MonoBehaviour {
 	public GameObject _bestScore;
 	public GameObject _homeButton;
 	public GameObject _restartButton;
+	public GameObject _newScore;
 	public Text finalScore;
 	public Text bestScore;
 
+	private bool newScore = false;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +40,7 @@ public class ScoreManager : MonoBehaviour {
 		_bronze.SetActive (false);
 		_homeButton.SetActive (false);
 		_restartButton.SetActive (false);
+		_newScore.SetActive (false);
 		
 		initialized = false;
 
@@ -68,6 +71,7 @@ public class ScoreManager : MonoBehaviour {
 		}
 		if (scoreCount > hiScoreCount) {
 			hiScoreCount = scoreCount;
+			newScore = true;
 			
 		}
 		scoreText.text = "" + (int)Mathf.Round(scoreCount);
@@ -101,6 +105,9 @@ public class ScoreManager : MonoBehaviour {
 		_bestScore.SetActive (true);
 		_homeButton.SetActive (true);
 		_restartButton.SetActive (true);
+		if (newScore) {
+			_newScore.SetActive (true);
+		}
 
 		if (scoreCount >= 100.0f && scoreCount < 200.0f) {
 			_bronze.SetActive (true);

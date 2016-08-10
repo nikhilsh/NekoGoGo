@@ -120,8 +120,10 @@ public class rightholder : MonoBehaviour {
 	}
 
 	public static bool check(){
+//		Debug.Log ("right check: " + hitIndex);
 
 		if (hitIndex >= count*0.65) {
+			Debug.Log ("right check: True");
 			return true;
 		}
 		return false;

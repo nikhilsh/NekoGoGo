@@ -10,6 +10,8 @@ public class mainholder : MonoBehaviour {
 	public static string[] shapes = { "square", "circle", "star", "triangle", "hexagon"};
 	public static float tempLoggedTime;
 	public static float scoreMultipler = 2.5F;
+	private static int leftAngle;
+	private static int rightAngle;
 	GameObject theCat;
 	CatController _catController;
 	GameObject theDog;
@@ -37,8 +39,7 @@ public class mainholder : MonoBehaviour {
 	void Update () {
 
 		if (leftholder.check () && rightholder.check ()) {
-			// call ng ping's script!! HERE ADD THE FUCKING POINTS 
-			// totalScore += calculateScore(Time.deltaTime-temploggedTime);
+			Debug.Log ("left and right check True");
 			if (!_catController.initialized) {
 				_catController.initialized = true;
 				_dogController.initialized = true;
@@ -50,34 +51,38 @@ public class mainholder : MonoBehaviour {
 				return;
 			}
 			int score = (int)calculateScore (Time.time - tempLoggedTime);
-			if (score == 0) {
-				return;
-			}
-			else if (score >= 15){
+			Debug.Log ("TimeNow: "+Time.time+"\ntempLoggedTime: "+tempLoggedTime+"\n"+"score: "+score);
+			if (score >= 15){
 				int currentStarfishCount = PlayerPrefs.GetInt ("StarfishCount");
 				PlayerPrefs.SetInt("StarfishCount", currentStarfishCount+1);
 			}
-			_catController.addscore(score);
-			_dogController.addScore(score);
-			_scoreManagerController.addScore (score);
-			foreach (bgLooper looper in _bgLooperController) {
-				looper.addScore (score);
-			}
+				
 			// reset tempLoggedTime;
 			tempLoggedTime = Time.time;
 
 			leftholder.destroyAllChild ();
 			rightholder.destroyAllChild ();
+			if (score < 0.1f) {
+				leftholder.changeShape (0);
+				rightholder.changeShape (0);
+			} else {
+				_catController.addscore (score);
+				_dogController.addScore (score);
+				_scoreManagerController.addScore (score);
+				foreach (bgLooper looper in _bgLooperController) {
+					looper.addScore (score);
+				}
 
-			int randomnumber = Random.Range (0,shapes.Length);
-			leftShape = shapes [randomnumber];
-			randomnumber = Random.Range (0,shapes.Length);
-			rightShape = shapes [randomnumber];
+				int randomnumber = Random.Range (0, shapes.Length);
+				leftShape = shapes [randomnumber];
+				randomnumber = Random.Range (0, shapes.Length);
+				rightShape = shapes [randomnumber];
 
-			randomnumber = Random.Range (0, 361);
-			leftholder.changeShape (randomnumber);
-			randomnumber = Random.Range (0, 361);
-			rightholder.changeShape (randomnumber);
+				leftAngle = Random.Range (0, 361);
+				leftholder.changeShape (leftAngle);
+				rightAngle = Random.Range (0, 361);
+				rightholder.changeShape (rightAngle);
+			}
 		}
 	}
 
@@ -98,7 +103,7 @@ public class mainholder : MonoBehaviour {
 		rightholder.destroyAllChild ();
 
 		int randomnumber = Random.Range (0,shapes.Length);
-		leftShape = shapes [3];
+		leftShape = shapes [randomnumber];
 		randomnumber = Random.Range (0,shapes.Length);
 		rightShape = shapes [randomnumber];
 

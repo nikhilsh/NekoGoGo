@@ -115,7 +115,7 @@ public class leftholder : MonoBehaviour {
 			//			temp.name = ""+i;
 			//			listofurstoff.Add (temp);
 
-			GameObject temp = Instantiate(urstoff, new Vector3 (0,0, 0), transform.rotation) as GameObject;
+			GameObject temp = Instantiate(urstoff, new Vector3 (0,0,0), transform.rotation) as GameObject;
 			// temp.velocity = transform.TransformDirection( Vector3 (0, 1,     speed));
 			temp.transform.parent = transform;
 			temp.transform.localPosition = new Vector3 (coordinates[i][0], coordinates[i][1], 0);
@@ -129,10 +129,11 @@ public class leftholder : MonoBehaviour {
 	}
 
 	public static bool check(){
-
 		if (hitIndex >= count*0.65) {
+			Debug.Log ("left check: True");
 			return true;
 		}
+//		Debug.Log ("left check: False/nCount: "+count+"/nHitIndex: "+hitIndex);
 		return false;
 	}
 
