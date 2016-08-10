@@ -12,8 +12,7 @@ public class ScoreManager : MonoBehaviour {
 	public float pointsPerSecond;
 
 	public bool initialized;
-	public float CountInterval = 0.05f, timer=0;
-	int i=0;
+
 	public float pointsHolder;
 
 	// Use this for initialization
@@ -46,7 +45,7 @@ public class ScoreManager : MonoBehaviour {
 		if (initialized) {
 			
 			scoreCount += pointsPerSecond * Time.deltaTime;
-			//Debug.Log (scoreCount);
+
 		
 		}
 		if (scoreCount > hiScoreCount) {
@@ -54,19 +53,26 @@ public class ScoreManager : MonoBehaviour {
 			
 		}
 
+		scoreText.text = "" + (int)Mathf.Round(scoreCount);
 
-		if(i<scoreCount && timer>=CountInterval)
-		{
-			i++;
-			scoreText.text = "" + Mathf.Round(scoreCount);
-			timer=0;
-		}
 	
 	}
 
 	public void addScore(int points){
-		pointsHolder += points;
+		StopCoroutine ("CountTo");
+		StartCoroutine ("CountTo", scoreCount+points);
 
+	}
+
+
+	IEnumerator CountTo (int target) {
+		int start = (int)Mathf.Round(scoreCount);
+		for (float timer = 0; timer < 1.0F; timer += Time.deltaTime) {
+			float progress = timer / 1.0F;
+			scoreCount = (int)Mathf.Lerp (start, target, progress);
+			yield return null;
+		}
+		scoreCount = target;
 	}
 
 }
