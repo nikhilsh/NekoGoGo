@@ -15,8 +15,24 @@ public class ScoreManager : MonoBehaviour {
 
 	public float pointsHolder;
 
+	public GameObject _endGamePanel;
+	public GameObject _gold;
+	public GameObject _silver;
+	public GameObject _bronze;
+	public GameObject _finalScore;
+	public GameObject _bestScore;
+	public Text finalScore;
+	public Text bestScore;
+
+
 	// Use this for initialization
 	void Start () {
+		_endGamePanel.SetActive (false);
+		_finalScore.SetActive (false);
+		_bestScore.SetActive (false);
+		_gold.SetActive (false);
+		_silver.SetActive (false);
+		_bronze.SetActive (false);
 		
 		initialized = false;
 
@@ -38,32 +54,18 @@ public class ScoreManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.F)){
 			addScore (50);
 		}
-		if (Input.GetKeyDown (KeyCode.G)){
-			addScore (12);
-		}
-		if (Input.GetKeyDown (KeyCode.H)){
-			addScore (7);
-		}if (Input.GetKeyDown (KeyCode.J)){
-			addScore (2);
-		}
 		if (Input.GetKeyDown (KeyCode.A)) {
 			initialized = true;
 		}
 
 		if (initialized) {
-			
 			scoreCount += pointsPerSecond * Time.deltaTime;
-
-		
 		}
 		if (scoreCount > hiScoreCount) {
 			hiScoreCount = scoreCount;
 			
 		}
-
-		scoreText.text = "" + (int)Mathf.Round(scoreCount);
-
-	
+		scoreText.text = "" + (int)Mathf.Ceil(scoreCount);
 	}
 
 	public void addScore(int points){
@@ -74,7 +76,7 @@ public class ScoreManager : MonoBehaviour {
 
 
 	IEnumerator CountTo (int target) {
-		int start = (int)Mathf.Round(scoreCount);
+		int start = (int)Mathf.Round(scoreCount + pointsPerSecond);
 		for (float timer = 0; timer < 1.0F; timer += Time.deltaTime) {
 			float progress = timer / 1.0F;
 			scoreCount = (int)Mathf.Lerp (start, target, progress);
@@ -85,10 +87,25 @@ public class ScoreManager : MonoBehaviour {
 
 	//call to save high score
 	public void endGameScore() {
-		PlayerPrefs.SetInt("HighestScore", (int)Mathf.Round(scoreCount));
+
+		_endGamePanel.SetActive (true);
+		_finalScore.SetActive (true);
+		_bestScore.SetActive (true);
+
+		if (scoreCount >= 100.0f && scoreCount < 200.0f) {
+			_bronze.SetActive (true);
+		} else if (scoreCount >= 200.0f && scoreCount < 300.0f) {
+			_silver.SetActive (true);
+		} else if (scoreCount >= 400.0f) {
+			_gold.SetActive (true);
+		}
+
+
+		PlayerPrefs.SetInt("HighestScore", (int)Mathf.Round(hiScoreCount));
 		int currentStarfishCount = PlayerPrefs.GetInt ("StarfishCount");
 		PlayerPrefs.SetInt("StarfishCount", currentStarfishCount+(int)Mathf.Round(scoreCount/100));
-
+		finalScore.text = "" + (int)Mathf.Round(scoreCount);
+		bestScore.text = "" + (int)Mathf.Round(hiScoreCount);
 		PlayerPrefs.Save ();
 	}
 
