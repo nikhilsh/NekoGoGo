@@ -7,6 +7,7 @@ public class mainholder : MonoBehaviour {
 	public static string rightShape = "circle";
 	public static string[] shapes = { "square", "circle", "star", "triangle", "hexagon"};
 	public static float tempLoggedTime;
+	public static float scoreMultipler = 2.5F;
 	GameObject theCat;
 	CatController _catController;
 	GameObject theDog;
@@ -39,6 +40,9 @@ public class mainholder : MonoBehaviour {
 				}
 			}
 			int score = (int)calculateScore (Time.deltaTime - tempLoggedTime);
+			if (score == 0) {
+				return;
+			}
 			_catController.addscore(score);
 			_dogController.addScore(score);
 			foreach (bgLooper looper in _bgLooperController) {
@@ -63,12 +67,12 @@ public class mainholder : MonoBehaviour {
 	}
 
 	public static float calculateScore(float timeElapsed){
-		if (timeElapsed > 5.0f) {
-			return 50;
+		if (timeElapsed > 6.0f) {
+			return 0;
 		} else if ( timeElapsed == 0.0f){
-			return 250;
+			return 20;
 		} else {
-			return (250 - timeElapsed*40);
+			return (20 - timeElapsed*scoreMultipler);
 		}
 	}
 

@@ -12,7 +12,8 @@ public class ScoreManager : MonoBehaviour {
 	public float pointsPerSecond;
 
 	public bool initialized;
-
+	public float CountInterval = 0.05f, timer=0;
+	int i=0;
 	public float pointsHolder;
 
 	// Use this for initialization
@@ -53,8 +54,13 @@ public class ScoreManager : MonoBehaviour {
 			
 		}
 
-		scoreText.text = "" + Mathf.Round(scoreCount);
 
+		if(i<scoreCount && timer>=CountInterval)
+		{
+			i++;
+			scoreText.text = "" + Mathf.Round(scoreCount);
+			timer=0;
+		}
 	
 	}
 
