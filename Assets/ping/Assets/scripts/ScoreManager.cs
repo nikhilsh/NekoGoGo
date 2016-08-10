@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
@@ -87,6 +88,7 @@ public class ScoreManager : MonoBehaviour {
 
 	//call to save high score
 	public void endGameScore() {
+		initialized = false;
 
 		_endGamePanel.SetActive (true);
 		_finalScore.SetActive (true);
@@ -100,6 +102,11 @@ public class ScoreManager : MonoBehaviour {
 			_gold.SetActive (true);
 		}
 
+		#if UNITY_IOS
+		MoPub.createBanner("86f939fa9c1b4baeab244dbbc89bb094", MoPubAdPosition.BottomCenter );
+		#elif UNITY_ANDROID 
+		MoPub.createBanner("a9c44550748449d69c44cd3069ddf5f1", MoPubAdPosition.BottomCenter );
+		#endif
 
 		PlayerPrefs.SetInt("HighestScore", (int)Mathf.Round(hiScoreCount));
 		int currentStarfishCount = PlayerPrefs.GetInt ("StarfishCount");
