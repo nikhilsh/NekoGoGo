@@ -185,7 +185,7 @@ public class DogController : MonoBehaviour {
 		if (transform.position.x < -12.0f) {
 			transform.position = new Vector3 (-12.0f, transform.position.y, transform.position.z);
 		} else {
-			moveDistance = 5f - points / 200f;
+			moveDistance = Mathf.Abs(3f - points / 200f);
 			moveBack = true;
 		}
 

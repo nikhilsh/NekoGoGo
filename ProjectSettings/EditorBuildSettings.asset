@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/scenes/GameStartMenu.unity
   - enabled: 1
     path: Assets/scenes/TouchInputScene.unity
+  - enabled: 1
+    path: Assets/scenes/CustomisePage.unity
