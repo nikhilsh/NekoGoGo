@@ -55,6 +55,9 @@ public class DogController : MonoBehaviour {
 
 	public int _currentAnimationState = STATE_NOBARK;
 
+	GameObject theCat;
+	CatController _catController;
+
 	// Use this for initialization
 	void Start () {
 		animator = this.GetComponent<Animator> ();
@@ -65,6 +68,9 @@ public class DogController : MonoBehaviour {
 
 		scoremanager = GameObject.FindWithTag ("ScoreManager");
 		_scoremanager = scoremanager.GetComponent<ScoreManager>();
+
+		theCat = GameObject.FindWithTag ("CatController");
+		_catController = theCat.GetComponent<CatController>();
 
 
 		}
@@ -88,7 +94,7 @@ public class DogController : MonoBehaviour {
 
 		//SETACTIVE CONTROLS
 
-		if (gameObject.transform.position.x < -9.65 && gameObject.transform.position.x >= -11.15) {
+		if (gameObject.transform.position.x < -9.90 && gameObject.transform.position.x >= -11.15) {
 			dogBark.SetActive (true);
 			growlTimeCounter -= Time.deltaTime;
 			if (growlTimeCounter <= 0) {
@@ -101,6 +107,7 @@ public class DogController : MonoBehaviour {
 
 		if (tooClose) {
 			sweatAnim.SetActive (true);
+			_catController.dogIsClose = true;
 
 		} else {
 			sweatAnim.SetActive (false);

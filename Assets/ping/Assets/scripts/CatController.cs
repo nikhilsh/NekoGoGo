@@ -32,7 +32,17 @@ public class CatController : MonoBehaviour {
 	//SOUNDS
 	public AudioClip meowing;
 	public AudioClip startMeow;
-	//AudioSource audio;
+	public AudioClip clipStartIntro;
+	public AudioClip clipChillLoop;
+	public AudioClip clipParanoidTransit;
+	public AudioClip clipParanoidLoop;
+
+	//public float clipStartIntroTime;
+	//public float clipStartTimer = 0.01f;
+
+
+	public bool dogIsClose=false;
+	AudioSource audio;
 
 	//score prompts
 	public Transform scoreComment;
@@ -124,12 +134,25 @@ public class CatController : MonoBehaviour {
 			_instructions.SetActive (false);
 			if (meowDone == false){
 				AudioSource.PlayClipAtPoint(startMeow, transform.position); 
+				AudioSource.PlayClipAtPoint (clipStartIntro, transform.position);
+				//audio.PlayOneShot (clipStartIntro, 1.0f);
+				/* clipStartTimer += clipStartIntroTime;
+				if (clipStartTimer >= 0) {
+					clipStartTimer -= Time.deltaTime;
+					AudioSource.PlayClipAtPoint (clipStartIntro, transform.position);
+				} */
 			}
 			meowDone = true;
 			animator.SetBool ("initialized", true);
 			changeState (STATE_WALK);
 
 		}
+
+		/*if (audio.isPlaying && !dogIsClose) {
+			AudioSource.PlayClipAtPoint (clipChillLoop, transform.position);
+		}*/
+
+
 	}
 
 	void changeState(int state){
