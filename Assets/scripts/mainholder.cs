@@ -46,6 +46,7 @@ public class mainholder : MonoBehaviour {
 				foreach (bgLooper looper in _bgLooperController) {
 					looper.initialized = true;
 				}
+				_scoreManagerController.initialized = true;
 				return;
 			}
 			int score = (int)calculateScore (Time.time - tempLoggedTime);
@@ -258,7 +259,7 @@ public class mainholder : MonoBehaviour {
 	}
 
 	public static void endIntroduction() {
-		(GameObject.FindWithTag ("ScoreManager")).SetActive (true);
+		GameObject.FindWithTag ("ScoreManager").GetComponent<Canvas> ().enabled = true;
 	}
 
 	public void pauseToggle(){
