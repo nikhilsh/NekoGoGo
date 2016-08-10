@@ -22,6 +22,8 @@ public class ScoreManager : MonoBehaviour {
 	public GameObject _bronze;
 	public GameObject _finalScore;
 	public GameObject _bestScore;
+	public GameObject _homeButton;
+	public GameObject _restartButton;
 	public Text finalScore;
 	public Text bestScore;
 
@@ -34,6 +36,8 @@ public class ScoreManager : MonoBehaviour {
 		_gold.SetActive (false);
 		_silver.SetActive (false);
 		_bronze.SetActive (false);
+		_homeButton.SetActive (false);
+		_restartButton.SetActive (false);
 		
 		initialized = false;
 
@@ -95,6 +99,8 @@ public class ScoreManager : MonoBehaviour {
 		_endGamePanel.SetActive (true);
 		_finalScore.SetActive (true);
 		_bestScore.SetActive (true);
+		_homeButton.SetActive (true);
+		_restartButton.SetActive (true);
 
 		if (scoreCount >= 100.0f && scoreCount < 200.0f) {
 			_bronze.SetActive (true);
@@ -118,6 +124,13 @@ public class ScoreManager : MonoBehaviour {
 		PlayerPrefs.Save ();
 
 		PointScript.active = false;
+	}
+
+	public void restartGame(){
+		Application.LoadLevel (Application.loadedLevel);
+	}
+	public void homeMenu(){
+		Application.LoadLevel("GameStartMenu");
 	}
 
 }
