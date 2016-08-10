@@ -23,7 +23,7 @@ public class bgLooper : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -37,9 +37,13 @@ public class bgLooper : MonoBehaviour {
 			initialized = true;
 		}
 
-		
+		if (transform.position.x <= endPoint) {
+			Debug.Log("SPAWN CLOUD");
+			newBG ();
+
+		}
+
 		if (initialized) {
-			
 			if (faster && moveDistance > 0) {
 				moveDistance -= Time.deltaTime;
 				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-speed * speedMultiplier, GetComponent<Rigidbody2D> ().velocity.y);
@@ -55,18 +59,7 @@ public class bgLooper : MonoBehaviour {
 
 		} else {
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f,0.0f);
-		
 		}
-
-
-		if (transform.position.x <= endPoint) {
-			Debug.Log("SPAWN CLOUD");
-			newBG ();
-		
-		}
-
-
-
 	}
 
 	public void addScore(int points){

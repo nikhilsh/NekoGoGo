@@ -15,8 +15,8 @@ public class DogController : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject dogBark;
 
-	//public float moveSpeed = 1.0f;
-	public float dogBaseSpeed = 0.6f; 
+	private float moveSpeed;
+	public float dogBaseSpeed = 0.8f; 
 	public float tooCloseDistance = 5.0f;
 	public bool tooClose = false;
 
@@ -65,15 +65,14 @@ public class DogController : MonoBehaviour {
 		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
 		for (int i = 0; i < theClouds.Length; i++) {
 			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
+		}
 
 		scoremanager = GameObject.FindWithTag ("ScoreManager");
 		_scoremanager = scoremanager.GetComponent<ScoreManager>();
 
 		theCat = GameObject.FindWithTag ("CatController");
 		_catController = theCat.GetComponent<CatController>();
-
-
-		}
+	
 	}
 
 	// Update is called once per frame
@@ -89,7 +88,7 @@ public class DogController : MonoBehaviour {
 		/////////
 		/// 
 
-		float moveSpeed = dogBaseSpeed + (float)currentScore/100.0f;
+		moveSpeed = dogBaseSpeed + (Mathf.Pow((float)currentScore,1.1f) /300.0f);
 
 
 		//SETACTIVE CONTROLS
@@ -108,9 +107,12 @@ public class DogController : MonoBehaviour {
 		if (tooClose) {
 			sweatAnim.SetActive (true);
 			_catController.dogIsClose = true;
+			Handheld.Vibrate ();
+			_scoremanager.boosted = true;
 
 		} else {
 			sweatAnim.SetActive (false);
+			_scoremanager.boosted = false;
 		}
 		////////////////
 		//PROXIMITY CONTROL
@@ -148,7 +150,7 @@ public class DogController : MonoBehaviour {
 			if (moveBack && moveDistance > 0) {
 				moveDistance -= Time.deltaTime;
 
-				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-moveSpeed, GetComponent<Rigidbody2D> ().velocity.y);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (-0.6f, GetComponent<Rigidbody2D> ().velocity.y);
 		
 			} else if (moveBack && moveDistance <= 0) {
 		
@@ -180,21 +182,32 @@ public class DogController : MonoBehaviour {
 
 	public void addScore(int points){
 //		moveDistance = points * moveBackMultiplier;
-		if (moveDistance < 20.0f) {
-			moveDistance = Mathf.Abs(5f - points / 500);
+		if (transform.position.x < -12.0f) {
+			transform.position = new Vector3 (-12.0f, transform.position.y, transform.position.z);
+		} else {
+			moveDistance = 5f - points / 200f;
+			moveBack = true;
 		}
-		moveBack = true;
+
 		//movementTimer = movementTime;
 		
 	}
-
-
 
 	public void endGame(){
 		Instantiate (explosion, cat.position, cat.rotation);
 		gameOver = true;
 		catSprite.SetActive (false);
 		dogSprite.SetActive (false);
+
+		_bgLooperController.Clear ();
+		theClouds = GameObject.FindGameObjectsWithTag ("BGLooper");
+		for (int i = 0; i < theClouds.Length; i++) {
+			_bgLooperController.Add (theClouds [i].GetComponent<bgLooper> ());
+		}
+
+		foreach (bgLooper looper in _bgLooperController) {
+			looper.initialized = false;
+		}
 		Debug.Log("STOP");
 
 	}
