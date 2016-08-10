@@ -155,7 +155,9 @@ public class ScoreManager : MonoBehaviour {
 
 	}
 	public void homeMenu(){
+		#if UNITY_IOS
 		MoPub.destroyBanner ();
+		#endif
 		PointScript.active = true;
 		Application.LoadLevel("GameStartMenu");
 	}
