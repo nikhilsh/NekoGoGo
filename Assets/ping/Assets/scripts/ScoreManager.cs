@@ -13,6 +13,8 @@ public class ScoreManager : MonoBehaviour {
 
 	public bool initialized;
 
+	public float pointsHolder;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +22,7 @@ public class ScoreManager : MonoBehaviour {
 
 		////////////
 		scoreCount = 0;
+		pointsHolder = 0;
 
 		if (PlayerPrefs.GetInt ("HighestScore") != null) {
 		
@@ -42,7 +45,7 @@ public class ScoreManager : MonoBehaviour {
 		if (initialized) {
 			
 			scoreCount += pointsPerSecond * Time.deltaTime;
-			Debug.Log (scoreCount);
+			//Debug.Log (scoreCount);
 		
 		}
 		if (scoreCount > hiScoreCount) {
@@ -56,7 +59,8 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void addScore(int points){
-		
+		pointsHolder += points;
+
 	}
 
 }
