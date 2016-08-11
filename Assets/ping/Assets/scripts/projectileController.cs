@@ -44,12 +44,14 @@ public class projectileController : MonoBehaviour {
 	{
 		if (coll.gameObject.tag == "CatController")
 		{
-			AudioSource.PlayClipAtPoint(meowing, transform.position);  
+			AudioSource.PlayClipAtPoint(meowing, transform.position); 	 
 			Destroy (this.gameObject);
 			_scoremanager.addScore (5);
 
 
 		}
+		void O
+
 	}
 	
 }
